@@ -267,17 +267,15 @@
 
 
 
-  <!-- RELIABLE STATS + LANGUAGES -->
+  <!-- UPDATED STATS (FIXED last updated badge) -->
   <div id="reliable-stats" style="text-align:center; margin-top:50px; max-width:720px; margin-left:auto; margin-right:auto;">
 
-    <!-- Shields badges -->
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
       <img src="https://img.shields.io/github/followers/somguptaa?label=Followers&style=social" alt="">
       <img src="https://img.shields.io/github/stars/somguptaa?label=Stars&style=social" alt="">
-      <img src="https://img.shields.io/github/last-commit/somguptaa/somguptaa.github.io?label=Last%20Updated&color=blue" alt="">
+      <img src="https://img.shields.io/github/last-commit/Som9889/som9889.github.io?label=Last%20Updated&color=blue" alt="">
     </div>
 
-    <!-- Language summary from GitHub API -->
     <div style="background:var(--card);padding:16px;border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,0.06);">
       <strong>Top languages (across my public repositories):</strong>
 
@@ -343,7 +341,7 @@ toggleBtn.addEventListener("click", () => {
   const dark = !document.documentElement.hasAttribute("data-theme");
 
   if (dark) {
-    document.documentElement.setAttribute("data-theme", "dark");
+    document.documentElement.setAttribute("data-theme","dark");
     toggleBtn.textContent = "Light Mode";
   } else {
     document.documentElement.removeAttribute("data-theme");
@@ -351,7 +349,7 @@ toggleBtn.addEventListener("click", () => {
   }
 });
 
-/* Github Top Languages — API Based (No broken images) */
+/* Github Languages — API Based */
 (async function () {
   const username = "somguptaa";
   const langsEl = document.getElementById("langs");
