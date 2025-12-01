@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Som Gupta | Java Developer</title>
+
+  <style>
+    /* Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f7f7f7;
+      color: #222;
+    }
+
+    nav {
+      width: 100%;
+      background: white;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li {
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #0077ff;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 45px;
+      font-weight: 700;
+    }
+
+    .hero h1 span {
+      color: #0077ff;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    .hero .btns {
+      margin-top: 25px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      background: #0077ff;
+      color: white;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #005fcc;
+    }
+
+    /* SECTION */
+    section {
+      padding: 80px 50px;
+    }
+
+    h2.section-title {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    /* ABOUT */
+    .about-content {
+      max-width: 900px;
+      margin: auto;
+      font-size: 18px;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .skill-box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* PROJECTS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+      color: #0077ff;
+    }
+
+    .project-card p {
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .project-card a {
+      display: inline-block;
+      margin-top: 15px;
+      color: #0077ff;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* CONTACT */
+    .contact-info {
+      text-align: center;
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    .contact-info a {
+      color: #0077ff;
+      text-decoration: none;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 50px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <h2>Som Gupta</h2>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <h1>Hello, I’m <span>Som Gupta</span></h1>
+      <p>Java Developer | Spring Boot | Full Stack | SQL | MongoDB</p>
+      <div class="btns">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn" href="https://github.com/somguptaa" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p class="about-content">
+      I am a Java Developer skilled in building REST APIs, web applications, and database-driven systems using
+      <strong>Java, Spring Boot, SQL, MongoDB, and JavaScript</strong>.
+      I enjoy creating real-world projects, learning new technologies, and writing clean, efficient code.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-box">Java</div>
+      <div class="skill-box">Spring Boot</div>
+      <div class="skill-box">JPA / Hibernate</div>
+      <div class="skill-box">MySQL</div>
+      <div class="skill-box">Oracle</div>
+      <div class="skill-box">MongoDB</div>
+      <div class="skill-box">JavaScript</div>
+      <div class="skill-box">HTML / CSS</div>
+      <div class="skill-box">Docker</div>
+      <div class="skill-box">Git & GitHub</div>
+      <div class="skill-box">Swagger / Postman</div>
+      <div class="skill-box">JUnit / Mockito</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="project-grid">
+      <!-- Bookstore -->
+      <div class="project-card">
+        <h3>Online BookStore</h3>
+        <p>A full Spring Boot application with authentication, book catalog, cart, orders, and reviews modules.</p>
+        <a href="https://github.com/somguptaa/Online-BookStore" target="_blank">View Project →</a>
+      </div>
+
+      <!-- School Management -->
+      <div class="project-card">
+        <h3>School Management System</h3>
+        <p>Production-ready school management APIs with JWT authentication, CRUD operations, and MySQL integration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <p class="contact-info">
+      📧 Email: <a href="mailto:somgupta0011@gmail.com">somgupta0011@gmail.com</a><br>
+      🔗 LinkedIn: <a href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank">Som Gupta</a><br>
+      💻 GitHub: <a href="https://github.com/somguptaa" target="_blank">somguptaa</a>
+    </p>
+  </section>
+
+  <footer>
+    © 2025 Som Gupta • Portfolio Website
+  </footer>
+
+</body>
+</html>
