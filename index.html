@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Som Gupta — Developer Portfolio</title>
-<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
-<!-- Google font -->
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-  :root{
+  :root {
     --bg: #f7f7f7;
     --card: #fff;
     --text: #111827;
     --muted: #555;
     --accent: #0077ff;
   }
-  [data-theme="dark"]{
+  [data-theme="dark"] {
     --bg: #0b1220;
     --card: #0f1724;
     --text: #e6eef8;
@@ -25,95 +24,156 @@
     --accent: #60a5fa;
   }
 
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    -webkit-font-smoothing:antialiased;
-    transition:background .25s,color .25s;
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
   }
 
-  /* NAV */
-  nav{
-    position:sticky;top:0;
-    backdrop-filter:saturate(140%) blur(6px);
-    display:flex;align-items:center;justify-content:space-between;
-    gap:20px;padding:16px 28px;
-    background:rgba(255,255,255,0.4);
+  /* Navbar */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 14px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  [data-theme="dark"] nav{
-    background:rgba(10,14,20,0.4);
+  [data-theme="dark"] nav {
+    background: rgba(15, 23, 36, 0.5);
   }
-  .brand{font-weight:700;font-size:20px}
-  .nav-links{display:flex;gap:18px;align-items:center}
-  .nav-links a{color:var(--text);text-decoration:none;font-weight:600}
-  .nav-actions{display:flex;gap:10px;align-items:center}
 
-  /* HERO */
-  .hero{
-    min-height:60vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:40px 18px;
-    text-align:center;
-  }
-  .hero-card{
-    width:100%;
-    max-width:900px;
-    background:var(--card);
-    padding:36px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(2,6,23,0.08);
-  }
-  .hero h1{font-size:34px;margin:0 0 8px}
-  .hero .typing{color:var(--accent);font-weight:700}
-  .lead{color:var(--muted)}
+  .brand { font-weight: 700; font-size: 20px; }
 
-  .btn{
-    padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:700;
-    background:var(--accent);color:white;
+  .nav-links a {
+    margin-left: 16px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
   }
-  .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
 
-  /* SECTIONS */
-  section{padding:64px 20px}
-  .container{max-width:1100px;margin:0 auto}
-  h2.section-title{font-size:28px;text-align:center;margin-bottom:20px}
+  .toggle-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero-card {
+    background: var(--card);
+    max-width: 900px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.1);
+  }
+
+  h2.section-title {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 28px;
+  }
+
+  .lead {
+    max-width: 800px;
+    margin: auto;
+    color: var(--muted);
+    line-height: 1.6;
+  }
 
   /* Skills */
-  .skills-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:28px;
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin: 30px auto;
+    max-width: 1000px;
   }
-  .skill{
-    background:var(--card);padding:16px;border-radius:10px;text-align:center;font-weight:700;
-    box-shadow:0 6px 18px rgba(2,6,23,0.06);
+  .skill {
+    background: var(--card);
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    text-align: center;
+    font-weight: 600;
   }
 
-  /* Projects (no images) */
-  .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-  .card{
-    background:var(--card);border-radius:10px;padding:20px;
-    box-shadow:0 10px 30px rgba(2,6,23,0.06);
+  /* Projects (No Images) */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
   }
-  .card h3{margin:0 0 8px;color:var(--accent)}
-  .card p{color:var(--muted)}
-  .buttons{margin-top:12px;display:flex;gap:10px}
+  .card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+  }
+  .card h3 {
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+  .buttons a {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
 
   /* Contact */
-  .input,textarea{width:100%;padding:12px;border-radius:8px;border:1px solid #ddd;background:transparent;color:var(--text)}
-  textarea{min-height:140px}
+  .contact-form {
+    max-width: 600px;
+    margin: auto;
+  }
+  .input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: transparent;
+    color: var(--text);
+  }
+  .btn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+  }
 
-  footer{text-align:center;padding:20px;color:var(--muted)}
+  footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: var(--muted);
+  }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="container">
+<nav>
   <div class="brand">Som Gupta</div>
   <div class="nav-links">
     <a href="#about">About</a>
@@ -121,104 +181,83 @@
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </div>
-  <div class="nav-actions">
-    <button id="themeToggle">🌙</button>
-    <a class="btn ghost" href="/Som-Resume.pdf" target="_blank">Resume</a>
-  </div>
+  <button id="themeToggle" class="toggle-btn">Dark Mode</button>
 </nav>
 
 <!-- HERO -->
-<header class="hero">
+<section class="hero">
   <div class="hero-card">
-    <h1>Hello, I’m <span style="color:var(--accent)">Som Gupta</span></h1>
-    <p><span id="typing" class="typing"></span></p>
-    <p class="lead">Java • Spring Boot • Full Stack • SQL / MongoDB • REST APIs</p>
-    <br>
-    <a href="#projects" class="btn">View Projects</a>
+    <h1>Hello, I’m <span style="color: var(--accent)">Som Gupta</span></h1>
+    <p id="typing" class="typing"></p>
+    <p class="lead">Java • Spring Boot • Full Stack Developer • SQL / MongoDB • REST APIs</p>
   </div>
-</header>
+</section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="container">
-    <h2 class="section-title">About Me</h2>
-    <p class="lead">I build REST APIs and web apps using Java, Spring Boot, SQL, MongoDB, and JavaScript. I follow clean architecture and modern engineering practices.</p>
-  </div>
+  <h2 class="section-title">About Me</h2>
+  <p class="lead">I build scalable APIs and web applications using Java, Spring Boot, SQL, MongoDB, and JavaScript. I focus on clean architecture, security, and best practices.</p>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="container">
-    <h2 class="section-title">Skills</h2>
-    <div class="skills-grid">
-      <div class="skill">Java</div>
-      <div class="skill">Spring Boot</div>
-      <div class="skill">JPA / Hibernate</div>
-      <div class="skill">MySQL</div>
-      <div class="skill">Oracle</div>
-      <div class="skill">MongoDB</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">HTML / CSS</div>
-      <div class="skill">Docker</div>
-      <div class="skill">Git & GitHub</div>
-      <div class="skill">Swagger / Postman</div>
-      <div class="skill">JUnit / Mockito</div>
-    </div>
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill">Java</div>
+    <div class="skill">Spring Boot</div>
+    <div class="skill">Hibernate / JPA</div>
+    <div class="skill">MySQL</div>
+    <div class="skill">Oracle</div>
+    <div class="skill">MongoDB</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">HTML / CSS</div>
+    <div class="skill">Docker</div>
+    <div class="skill">Git & GitHub</div>
+    <div class="skill">Swagger / Postman</div>
+    <div class="skill">JUnit / Mockito</div>
   </div>
 </section>
 
-<!-- PROJECTS (NO IMAGES) -->
+<!-- PROJECTS -->
 <section id="projects">
-  <div class="container">
-    <h2 class="section-title">Projects</h2>
+  <h2 class="section-title">Projects</h2>
 
-    <div class="project-grid">
+  <div class="project-grid">
 
-      <div class="card">
-        <h3>Online BookStore</h3>
-        <p>REST API app with JWT auth, catalog, cart, orders & reviews. Built using Spring Boot, MySQL, MongoDB.</p>
-        <div class="buttons">
-          <a class="btn ghost" href="https://github.com/somguptaa/Online-BookStore" target="_blank">Repository</a>
-        </div>
+    <div class="card">
+      <h3>Online BookStore</h3>
+      <p>REST API application with JWT authentication, catalog, cart, orders & reviews using Spring Boot, MySQL & MongoDB.</p>
+      <div class="buttons">
+        <a href="https://github.com/somguptaa/Online-BookStore" target="_blank">Repository</a>
       </div>
-
-      <div class="card">
-        <h3>School Management System</h3>
-        <p>School admin APIs with role-based JWT security, CRUD modules & MySQL integration.</p>
-        <div class="buttons">
-          <a class="btn ghost" href="#" target="_blank">Repository</a>
-        </div>
-      </div>
-
     </div>
 
-    <br><br>
-
-    <!-- GitHub Stats -->
-    <div style="text-align:center;">
-      <img src="https://github-readme-stats.vercel.app/api?username=somguptaa&show_icons=true&hide_border=true" style="max-width:420px;margin:5px;">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=somguptaa&layout=compact&hide_border=true" style="max-width:320px;margin:5px;">
+    <div class="card">
+      <h3>School Management System</h3>
+      <p>Backend APIs for school operations with role-based JWT security, CRUD modules, and MySQL.</p>
+      <div class="buttons">
+        <a href="#" target="_blank">Repository</a>
+      </div>
     </div>
 
+  </div>
+
+  <!-- GitHub Stats -->
+  <div style="text-align:center; margin-top: 40px;">
+    <img id="statsImg" style="max-width:420px;display:block;margin:auto;">
+    <img id="langsImg" style="max-width:320px;display:block;margin:20px auto;">
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="container">
-    <h2 class="section-title">Contact</h2>
-
-    <form style="max-width:600px;margin:auto;">
-      <input class="input" placeholder="Your name">
-      <br><br>
-      <input class="input" placeholder="Your email">
-      <br><br>
-      <textarea class="input" placeholder="Your message"></textarea>
-      <br><br>
-      <button class="btn">Send Message</button>
-    </form>
-
-  </div>
+  <h2 class="section-title">Contact</h2>
+  <form class="contact-form">
+    <input class="input" placeholder="Your Name">
+    <input class="input" placeholder="Your Email">
+    <textarea class="input" placeholder="Your Message"></textarea>
+    <button class="btn">Send Message</button>
+  </form>
 </section>
 
 <footer>
@@ -227,28 +266,56 @@
 
 <script>
   /* Year */
-  document.getElementById("year").innerText = new Date().getFullYear();
-
-  /* Simple Theme Toggle */
-  const toggleBtn = document.getElementById("themeToggle");
-  toggleBtn.addEventListener("click", () => {
-    document.documentElement.toggleAttribute("data-theme");
-    toggleBtn.textContent =
-      document.documentElement.getAttribute("data-theme") === "dark" ? "☀️" : "🌙";
-  });
+  document.getElementById("year").textContent = new Date().getFullYear();
 
   /* Typing Effect */
   const typingEl = document.getElementById("typing");
-  const phrases = ["Java Developer", "Spring Boot Engineer", "Full Stack Developer", "API Developer"];
-  let pi = 0, ci = 0, del = false;
+  const words = [
+    "Java Developer",
+    "Spring Boot Engineer",
+    "Full Stack Developer",
+    "API Developer"
+  ];
+  let wi = 0, ci = 0, del = false;
+
   function type() {
-    let txt = phrases[pi];
-    typingEl.innerText = del ? txt.substring(0, ci--) : txt.substring(0, ci++);
-    if (!del && ci === txt.length) { del = true; setTimeout(type, 800); return; }
-    if (del && ci === 0) { del = false; pi = (pi + 1) % phrases.length; }
+    let w = words[wi];
+    typingEl.textContent = del ? w.substring(0, ci--) : w.substring(0, ci++);
+    if (!del && ci === w.length) { del = true; setTimeout(type, 900); return; }
+    if (del && ci === 0) { del = false; wi = (wi + 1) % words.length; }
     setTimeout(type, del ? 50 : 80);
   }
   type();
+
+  /* DARK/LIGHT MODE + Auto Github Stats Theme */
+  const toggleBtn = document.getElementById("themeToggle");
+
+  function updateStats(dark) {
+    document.getElementById("statsImg").src =
+      dark
+        ? "https://github-readme-stats.vercel.app/api?username=somguptaa&show_icons=true&theme=github_dark&hide_border=true"
+        : "https://github-readme-stats.vercel.app/api?username=somguptaa&show_icons=true&hide_border=true";
+
+    document.getElementById("langsImg").src =
+      dark
+        ? "https://github-readme-stats.vercel.app/api/top-langs/?username=somguptaa&layout=compact&theme=github_dark&hide_border=true"
+        : "https://github-readme-stats.vercel.app/api/top-langs/?username=somguptaa&layout=compact&hide_border=true";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    const dark = !document.documentElement.hasAttribute("data-theme");
+    if (dark) {
+      document.documentElement.setAttribute("data-theme", "dark");
+      toggleBtn.textContent = "Light Mode";
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+      toggleBtn.textContent = "Dark Mode";
+    }
+    updateStats(dark);
+  });
+
+  /* Load default stats */
+  updateStats(false);
 </script>
 
 </body>
