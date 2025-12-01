@@ -1,292 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Som Gupta | Java Developer</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Som Gupta — Developer Portfolio</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
-  <style>
-    /* Google Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+<!-- Google font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-      font-family: 'Poppins', sans-serif;
-    }
+<style>
+  :root{
+    --bg: #f7f7f7;
+    --card: #fff;
+    --text: #111827;
+    --muted: #555;
+    --accent: #0077ff;
+  }
+  [data-theme="dark"]{
+    --bg: #0b1220;
+    --card: #0f1724;
+    --text: #e6eef8;
+    --muted: #b6c2d8;
+    --accent: #60a5fa;
+  }
 
-    body {
-      background: #f7f7f7;
-      color: #222;
-    }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    transition:background .25s,color .25s;
+  }
 
-    nav {
-      width: 100%;
-      background: white;
-      padding: 20px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
+  /* NAV */
+  nav{
+    position:sticky;top:0;
+    backdrop-filter:saturate(140%) blur(6px);
+    display:flex;align-items:center;justify-content:space-between;
+    gap:20px;padding:16px 28px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3));
+    border-bottom:1px solid rgba(0,0,0,0.04);
+  }
+  [data-theme="dark"] nav{
+    background:linear-gradient(180deg, rgba(10,14,20,0.6), rgba(10,14,20,0.3));
+    border-bottom:1px solid rgba(255,255,255,0.03);
+  }
+  .brand{font-weight:700;font-size:20px}
+  .nav-links{display:flex;gap:18px;align-items:center}
+  .nav-links a{color:var(--text);text-decoration:none;font-weight:600}
+  .nav-actions{display:flex;gap:10px;align-items:center}
 
-    nav h2 {
-      font-size: 24px;
-      font-weight: 700;
-      color: #333;
-    }
+  /* HERO */
+  .hero{
+    min-height:72vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 18px;
+    text-align:center;
+  }
+  .hero-card{
+    width:100%;
+    max-width:980px;
+    background:var(--card);
+    padding:36px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(2,6,23,0.08);
+    transform:translateY(0);
+    transition:transform .4s ease,box-shadow .3s;
+  }
+  .hero-card:hover{transform:translateY(-6px)}
+  .hero h1{font-size:34px;margin:0 0 8px}
+  .hero .typing{color:var(--accent);font-weight:700}
+  .hero p{color:var(--muted);margin:6px 0 16px;line-height:1.6}
+  .hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-block;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:700;
+    background:var(--accent);color:white;box-shadow:0 6px 18px rgba(3,46,99,0.12);
+  }
+  .btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(0,0,0,0.06)}
 
-    nav ul {
-      display: flex;
-      gap: 25px;
-    }
+  /* SECTIONS */
+  section{padding:64px 20px}
+  .container{max-width:1100px;margin:0 auto}
 
-    nav ul li {
-      list-style: none;
-    }
+  h2.section-title{
+    font-size:28px;text-align:center;margin-bottom:28px;position:relative;
+  }
+  .lead{max-width:900px;margin:0 auto;color:var(--muted);text-align:center;line-height:1.6}
 
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: 0.2s;
-    }
+  /* Skills grid */
+  .skills-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:28px;
+  }
+  .skill{
+    background:var(--card);padding:18px;border-radius:10px;text-align:center;font-weight:700;
+    box-shadow:0 6px 18px rgba(2,6,23,0.06);
+  }
 
-    nav a:hover {
-      color: #0077ff;
-    }
+  /* Projects */
+  .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .card{
+    background:var(--card);border-radius:10px;padding:16px;overflow:hidden;position:relative;
+    box-shadow:0 10px 30px rgba(2,6,23,0.06);transition:transform .25s ease;
+  }
+  .card:hover{transform:translateY(-6px)}
+  .card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+  .card h3{margin:12px 0 6px;color:var(--accent)}
+  .card p{color:var(--muted);line-height:1.5}
+  .card .buttons{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
 
-    /* HERO SECTION */
-    .hero {
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 20px;
-    }
+  /* GitHub stats area */
+  .stats-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:14px}
 
-    .hero h1 {
-      font-size: 45px;
-      font-weight: 700;
-    }
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:720px;margin:18px auto}
+  @media(min-width:760px){ .contact-grid{grid-template-columns:1fr 360px} }
+  .input,textarea{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text)}
+  textarea{min-height:140px;resize:vertical}
+  .muted{color:var(--muted)}
+  .center{text-align:center}
 
-    .hero h1 span {
-      color: #0077ff;
-    }
+  footer{padding:18px;text-align:center;color:var(--muted);background:transparent;border-top:1px solid rgba(0,0,0,0.03)}
 
-    .hero p {
-      font-size: 18px;
-      margin-top: 10px;
-      color: #555;
-    }
-
-    .hero .btns {
-      margin-top: 25px;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-    }
-
-    .btn {
-      padding: 12px 25px;
-      border-radius: 6px;
-      text-decoration: none;
-      background: #0077ff;
-      color: white;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #005fcc;
-    }
-
-    /* SECTION */
-    section {
-      padding: 80px 50px;
-    }
-
-    h2.section-title {
-      font-size: 32px;
-      text-align: center;
-      margin-bottom: 40px;
-      position: relative;
-    }
-
-    /* ABOUT */
-    .about-content {
-      max-width: 900px;
-      margin: auto;
-      font-size: 18px;
-      color: #444;
-      line-height: 1.7;
-    }
-
-    /* SKILLS */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .skill-box {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      text-align: center;
-      font-weight: 600;
-    }
-
-    /* PROJECTS */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
-
-    .project-card {
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
-
-    .project-card h3 {
-      margin-bottom: 10px;
-      color: #0077ff;
-    }
-
-    .project-card p {
-      color: #444;
-      line-height: 1.5;
-    }
-
-    .project-card a {
-      display: inline-block;
-      margin-top: 15px;
-      color: #0077ff;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    /* CONTACT */
-    .contact-info {
-      text-align: center;
-      font-size: 20px;
-      line-height: 1.8;
-    }
-
-    .contact-info a {
-      color: #0077ff;
-      text-decoration: none;
-    }
-
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 50px;
-    }
-
-  </style>
+  /* small helpers & animations */
+  .fade-up{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .inview{opacity:1;transform:translateY(0)}
+  .toggle{
+    padding:8px 10px;border-radius:8px;background:transparent;border:1px solid rgba(0,0,0,0.06);cursor:pointer;
+  }
+  .resume-badge{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(0,0,0,0.04);font-weight:700}
+</style>
 </head>
 <body>
+<nav class="container" role="navigation" aria-label="main nav">
+  <div class="brand">Som Gupta</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button id="themeToggle" class="toggle" title="Toggle dark/light">🌙</button>
+    <a id="resumeBtn" class="resume-badge" href="/Som-Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+  </div>
+</nav>
 
-  <!-- NAVBAR -->
-  <nav>
-    <h2>Som Gupta</h2>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-card fade-up" id="heroCard">
+    <h1>Hello, I’m <span style="color:var(--accent)">Som Gupta</span></h1>
+    <p><span id="typing" class="typing"></span></p>
+    <p class="lead">Java • Spring Boot • Full Stack (Java + JavaScript) • SQL / MongoDB — building web apps and APIs following clean architecture & SOLID principles.</p>
+    <div class="cta">
+      <a href="#projects" class="btn">View Projects</a>
+      <a href="https://github.com/somguptaa" target="_blank" class="btn ghost">GitHub</a>
+    </div>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div>
-      <h1>Hello, I’m <span>Som Gupta</span></h1>
-      <p>Java Developer | Spring Boot | Full Stack | SQL | MongoDB</p>
-      <div class="btns">
-        <a class="btn" href="#projects">View Projects</a>
-        <a class="btn" href="https://github.com/somguptaa" target="_blank">GitHub</a>
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    <p class="lead fade-up">I build REST APIs and web applications using Java, Spring Boot, SQL and JavaScript. I focus on writing maintainable, well-tested code and learning modern tooling: Docker, JWT Security, and microservices patterns.</p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid fade-up">
+      <div class="skill">Java</div>
+      <div class="skill">Spring Boot</div>
+      <div class="skill">JPA / Hibernate</div>
+      <div class="skill">MySQL</div>
+      <div class="skill">Oracle</div>
+      <div class="skill">MongoDB</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">HTML / CSS</div>
+      <div class="skill">Docker</div>
+      <div class="skill">Git & GitHub</div>
+      <div class="skill">Swagger / Postman</div>
+      <div class="skill">JUnit / Mockito</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Projects</h2>
+    <div class="project-grid fade-up">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1522120697546-6a3d0f3f7f9a?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=3b0fb1b9b5bd3c08c6b8de4c4f0a0dcb" alt="books">
+        <h3>Online BookStore</h3>
+        <p>A full application with auth, book catalog, cart, orders and reviews. Uses JWT, Spring Boot, MySQL & MongoDB.</p>
+        <div class="buttons">
+          <a class="btn ghost" href="https://github.com/somguptaa/Online-BookStore" target="_blank">View Repo</a>
+          <a class="btn" href="https://github.com/somguptaa/Online-BookStore" target="_blank">Live (if deployed)</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=ec6bb8a2a4f5b5c5d5e8f620aa7ebc6f" alt="school">
+        <h3>School Management System</h3>
+        <p>Production-ready school APIs with JWT-based role access, CRUD modules and Swagger docs.</p>
+        <div class="buttons">
+          <a class="btn ghost" href="#" target="_blank">View Repo</a>
+          <a class="btn" href="#" target="_blank">Demo (if deployed)</a>
+        </div>
+      </div>
+
+      <!-- add more cards as needed -->
+    </div>
+
+    <!-- GitHub stats -->
+    <div class="stats-row" style="margin-top:22px">
+      <!-- GitHub Readme Stats images (auto) -->
+      <img src="https://github-readme-stats.vercel.app/api?username=somguptaa&show_icons=true&hide_border=true" alt="GitHub Stats" style="max-width:420px;border-radius:10px">
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=somguptaa&layout=compact&hide_border=true" alt="Top Languages" style="max-width:320px;border-radius:10px">
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid fade-up">
+      <div>
+        <p class="muted">Want to collaborate or have a question? Send a message — I'll reply soon.</p>
+
+        <form id="contactForm">
+          <input name="from_name" class="input" placeholder="Your name" required><br><br>
+          <input name="reply_to" class="input" type="email" placeholder="Your email" required><br><br>
+          <input name="subject" class="input" placeholder="Subject" required><br><br>
+          <textarea name="message" placeholder="Message" required></textarea><br><br>
+          <div style="display:flex;gap:10px">
+            <button type="submit" class="btn">Send Message</button>
+            <button type="reset" class="btn ghost">Reset</button>
+          </div>
+          <p id="formStatus" class="muted" style="margin-top:10px"></p>
+        </form>
+      </div>
+
+      <div style="padding:18px;background:var(--card);border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.06)">
+        <h3>Contact Info</h3>
+        <p class="muted">Email: <strong>somgupta0011@gmail.com</strong></p>
+        <p class="muted">LinkedIn: <a href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank">Som Gupta</a></p>
+        <p class="muted">GitHub: <a href="https://github.com/somguptaa" target="_blank">somguptaa</a></p>
+        <div style="margin-top:10px">
+          <a class="btn ghost" href="/Som-Resume.pdf" target="_blank">Download Resume</a>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <h2 class="section-title">About Me</h2>
-    <p class="about-content">
-      I am a Java Developer skilled in building REST APIs, web applications, and database-driven systems using
-      <strong>Java, Spring Boot, SQL, MongoDB, and JavaScript</strong>.
-      I enjoy creating real-world projects, learning new technologies, and writing clean, efficient code.
-    </p>
-  </section>
+<footer>
+  © <span id="year"></span> Som Gupta • Built with ❤️ • <span class="muted">Hosted on GitHub Pages</span>
+</footer>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <h2 class="section-title">Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-box">Java</div>
-      <div class="skill-box">Spring Boot</div>
-      <div class="skill-box">JPA / Hibernate</div>
-      <div class="skill-box">MySQL</div>
-      <div class="skill-box">Oracle</div>
-      <div class="skill-box">MongoDB</div>
-      <div class="skill-box">JavaScript</div>
-      <div class="skill-box">HTML / CSS</div>
-      <div class="skill-box">Docker</div>
-      <div class="skill-box">Git & GitHub</div>
-      <div class="skill-box">Swagger / Postman</div>
-      <div class="skill-box">JUnit / Mockito</div>
-    </div>
-  </section>
+<!-- SCRIPTS -->
+<script>
+  /* ========== Theme toggle (saves preference) ========== */
+  const toggleBtn = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const storedTheme = localStorage.getItem('theme');
+  if(storedTheme) document.documentElement.setAttribute('data-theme', storedTheme);
+  updateToggleUI();
+  toggleBtn.addEventListener('click', ()=>{
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? '' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateToggleUI();
+  });
+  function updateToggleUI(){
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    toggleBtn.textContent = isDark ? '☀️' : '🌙';
+  }
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2 class="section-title">Projects</h2>
+  /* ========== Typing effect ========== */
+  const typingEl = document.getElementById('typing');
+  const phrases = ['Java Developer', 'Spring Boot • REST APIs', 'Full Stack (Java + JS)', 'Microservices | Docker'];
+  let pi = 0, ci = 0, deleting = false;
+  function tick(){
+    const full = phrases[pi];
+    if(!deleting){
+      typingEl.textContent = full.slice(0, ++ci);
+      if(ci === full.length){ deleting = true; setTimeout(tick, 900); return; }
+    } else {
+      typingEl.textContent = full.slice(0, --ci);
+      if(ci === 0){ deleting = false; pi = (pi+1)%phrases.length; setTimeout(tick, 200); return; }
+    }
+    setTimeout(tick, deleting ? 50 : 90);
+  }
+  tick();
 
-    <div class="project-grid">
-      <!-- Bookstore -->
-      <div class="project-card">
-        <h3>Online BookStore</h3>
-        <p>A full Spring Boot application with authentication, book catalog, cart, orders, and reviews modules.</p>
-        <a href="https://github.com/somguptaa/Online-BookStore" target="_blank">View Project →</a>
-      </div>
+  /* ========== simple fade-in when in view ========== */
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('inview');
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
-      <!-- School Management -->
-      <div class="project-card">
-        <h3>School Management System</h3>
-        <p>Production-ready school management APIs with JWT authentication, CRUD operations, and MySQL integration.</p>
-      </div>
-    </div>
-  </section>
+  /* ========== year update ========== */
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2 class="section-title">Contact</h2>
-    <p class="contact-info">
-      📧 Email: <a href="mailto:somgupta0011@gmail.com">somgupta0011@gmail.com</a><br>
-      🔗 LinkedIn: <a href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank">Som Gupta</a><br>
-      💻 GitHub: <a href="https://github.com/somguptaa" target="_blank">somguptaa</a>
-    </p>
-  </section>
+  /* ========== Contact form via EmailJS ==========
+     - Create an account at https://www.emailjs.com/
+     - Create EMAIL SERVICE, EMAIL TEMPLATE (with variables: from_name, reply_to, subject, message)
+     - Get your user id (or public key), service id and template id.
+     - Replace the placeholders below.
+  ================================================== */
+  // ====== IMPORTANT: Replace these with your values ======
+  const EMAILJS_SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID";
+  const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID";
+  const EMAILJS_USER_ID = "YOUR_EMAILJS_USER_ID"; // also called public key
+  // ======================================================
 
-  <footer>
-    © 2025 Som Gupta • Portfolio Website
-  </footer>
+  // If you want I can prefill these for you if you give me your EmailJS IDs.
+  (function(){
+    // load emailjs sdk if configured by user
+    if(EMAILJS_USER_ID && EMAILJS_USER_ID !== 'YOUR_EMAILJS_USER_ID'){
+      const s = document.createElement('script');
+      s.src = "https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js";
+      s.onload = ()=>{ emailjs.init(EMAILJS_USER_ID); }
+      document.head.appendChild(s);
+    }
+  })();
 
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const status = document.getElementById('formStatus');
+    status.textContent = 'Sending...';
+    // If EmailJS not set, fallback to mailto
+    if(EMAILJS_SERVICE_ID === "YOUR_EMAILJS_SERVICE_ID" || EMAILJS_TEMPLATE_ID === "YOUR_EMAILJS_TEMPLATE_ID"){
+      // fallback: open default mail app with prefilled message
+      const formData = new FormData(contactForm);
+      const name = encodeURIComponent(formData.get('from_name'));
+      const subject = encodeURIComponent(formData.get('subject'));
+      const body = encodeURIComponent('Name: '+formData.get('from_name') + '\\nEmail: ' + formData.get('reply_to') + '\\n\\n' + formData.get('message'));
+      window.location.href = `mailto:somgupta0011@gmail.com?subject=${subject}&body=${body}`;
+      status.textContent = 'Opened your mail client as fallback. Or configure EmailJS for direct sending.';
+      return;
+    }
+
+    // If EmailJS is configured: send via emailjs
+    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
+      .then(()=>{ status.textContent = 'Message sent — thank you!'; contactForm.reset(); })
+      .catch((err)=>{ console.error(err); status.textContent = 'Error sending message. Using fallback mailto.'; 
+        // fallback
+        const formData = new FormData(contactForm);
+        const subject = encodeURIComponent(formData.get('subject'));
+        const body = encodeURIComponent('Name: '+formData.get('from_name') + '\\nEmail: ' + formData.get('reply_to') + '\\n\\n' + formData.get('message'));
+        window.location.href = `mailto:somgupta0011@gmail.com?subject=${subject}&body=${body}`;
+      });
+  });
+</script>
 </body>
 </html>
