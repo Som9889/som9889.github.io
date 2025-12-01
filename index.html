@@ -1,117 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Som Gupta — Developer Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-  :root{
-    --bg:#f7f7f7;
-    --card:#ffffff;
-    --text:#111827;
-    --muted:#555;
-    --accent:#0077ff;
-  }
-  [data-theme="dark"]{
-    --bg:#0b1220;
-    --card:#0f1724;
-    --text:#e6eef8;
-    --muted:#b6c2d8;
-    --accent:#60a5fa;
+  :root {
+    --bg: #f7f7f7;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #555;
+    --accent: #0077ff;
   }
 
-  body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:var(--bg);
-    color:var(--text);
+  [data-theme="dark"] {
+    --bg: #0b1220;
+    --card: #0f1724;
+    --text: #e6eef8;
+    --muted: #b6c2d8;
+    --accent: #60a5fa;
   }
 
-  nav{
-    position:sticky;top:0;
-    display:flex;justify-content:space-between;align-items:center;
-    padding:16px 24px;
-    background:rgba(255,255,255,0.4);
-    backdrop-filter:blur(10px);
-  }
-  [data-theme="dark"] nav{
-    background:rgba(15,23,36,0.4);
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background .25s, color .25s;
   }
 
-  .nav-links a{margin-left:18px;text-decoration:none;color:var(--text);font-weight:600;}
-
-  .toggle-btn{
-    padding:8px 14px;border-radius:8px;
-    border:1px solid var(--accent);
-    background:transparent;color:var(--accent);
-    font-weight:600;cursor:pointer;
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(12px);
+    padding: 14px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .hero{padding:60px 20px;text-align:center;}
-  .hero-card{
-    max-width:900px;margin:auto;padding:32px;
-    background:var(--card);
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  [data-theme="dark"] nav {
+    background: rgba(15,23,36,0.4);
   }
 
-  h2.section-title{text-align:center;margin:40px 0 20px;font-size:28px;}
-
-  .lead{max-width:800px;margin:auto;color:var(--muted);line-height:1.6;}
-
-  .skills-grid{
-    max-width:1000px;margin:auto;
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:16px;padding:20px;
-  }
-  .skill{
-    background:var(--card);padding:16px;border-radius:10px;
-    text-align:center;font-weight:600;
-    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  .nav-links a {
+    margin-left: 16px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
   }
 
-  .project-grid{
-    max-width:1000px;margin:auto;
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:20px;
-  }
-  .card{
-    background:var(--card);padding:20px;border-radius:10px;
-    box-shadow:0 10px 26px rgba(0,0,0,0.08);
-  }
-  .card h3{color:var(--accent);margin:0 0 8px;}
-
-  .buttons a{
-    display:inline-block;
-    padding:8px 12px;margin-right:8px;
-    border-radius:8px;border:1px solid var(--accent);
-    color:var(--accent);text-decoration:none;font-weight:600;
+  .toggle-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 600;
   }
 
-  .contact-form{max-width:600px;margin:auto;padding:20px;}
-  .input, textarea{
-    width:100%;padding:12px;margin:10px 0;
-    border-radius:8px;border:1px solid #ccc;background:transparent;color:var(--text);
+  .hero {
+    text-align: center;
+    padding: 60px 20px;
   }
 
-  .btn{
-    padding:10px 16px;border:none;border-radius:8px;
-    background:var(--accent);color:white;font-weight:700;cursor:pointer;
+  .hero-card {
+    max-width: 900px;
+    margin: auto;
+    padding: 32px;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
 
-  footer{text-align:center;padding:20px;margin-top:40px;color:var(--muted);}
+  h2.section-title {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 40px;
+  }
+
+  .lead {
+    max-width: 800px;
+    margin: auto;
+    color: var(--muted);
+  }
+
+  .skills-grid {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .skill {
+    background: var(--card);
+    padding: 16px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    font-weight: 600;
+  }
+
+  .project-grid {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+  }
+
+  .card h3 {
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+
+  .buttons a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-right: 8px;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .contact-form {
+    max-width: 600px;
+    margin: auto;
+  }
+
+  .input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: transparent;
+    color: var(--text);
+  }
+
+  .btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--muted);
+    margin-top: 40px;
+  }
 </style>
 </head>
+
+
+
 
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="brand" style="font-weight:700;">Som Gupta</div>
+  <div style="font-weight:700;">Som Gupta</div>
 
   <div class="nav-links">
     <a href="#about">About</a>
@@ -124,21 +194,27 @@
 </nav>
 
 
+
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-card">
     <h1>Hello, I’m <span style="color:var(--accent)">Som Gupta</span></h1>
     <p id="typing" style="color:var(--accent);font-weight:700;"></p>
-    <p class="lead">Java • Spring Boot • REST APIs • SQL • MongoDB • Full Stack Developer</p>
+    <p class="lead">Java • Spring Boot • Full Stack (Java + JavaScript) • SQL • MongoDB • REST APIs</p>
   </div>
 </section>
+
+
 
 
 <!-- ABOUT -->
 <section id="about">
   <h2 class="section-title">About Me</h2>
-  <p class="lead">I build backend systems, REST APIs and web apps using Java, Spring Boot, SQL and JavaScript. I focus on clean architecture and software engineering best practices.</p>
+  <p class="lead">I build backend systems and REST APIs using Java, Spring Boot, SQL, MongoDB and JavaScript. I follow clean architecture and best engineering practices.</p>
 </section>
+
+
 
 
 <!-- SKILLS -->
@@ -162,6 +238,8 @@
 </section>
 
 
+
+
 <!-- PROJECTS -->
 <section id="projects">
   <h2 class="section-title">Projects</h2>
@@ -170,7 +248,7 @@
 
     <div class="card">
       <h3>Online BookStore</h3>
-      <p>REST API application with JWT authentication, catalog, cart, orders, and reviews.</p>
+      <p>REST API app with JWT authentication, catalog, cart, orders & reviews built with Spring Boot, MySQL, MongoDB.</p>
       <div class="buttons">
         <a href="https://github.com/somguptaa/Online-BookStore" target="_blank">Repository</a>
       </div>
@@ -178,7 +256,7 @@
 
     <div class="card">
       <h3>School Management System</h3>
-      <p>School backend with JWT role-based security, CRUD modules, and MySQL integration.</p>
+      <p>Backend system with JWT-based security, CRUD modules and MySQL for school operations.</p>
       <div class="buttons">
         <a href="#" target="_blank">Repository</a>
       </div>
@@ -186,13 +264,36 @@
 
   </div>
 
-  <!-- GITHUB STATS -->
-  <div style="text-align:center;margin-top:40px;">
-    <img id="statsImg" style="max-width:420px;display:block;margin:auto;">
-    <img id="langsImg" style="max-width:320px;display:block;margin:20px auto;">
+
+
+
+  <!-- RELIABLE STATS + LANGUAGES -->
+  <div id="reliable-stats" style="text-align:center; margin-top:50px; max-width:720px; margin-left:auto; margin-right:auto;">
+
+    <!-- Shields badges -->
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+      <img src="https://img.shields.io/github/followers/somguptaa?label=Followers&style=social" alt="">
+      <img src="https://img.shields.io/github/stars/somguptaa?label=Stars&style=social" alt="">
+      <img src="https://img.shields.io/github/last-commit/somguptaa/somguptaa.github.io?label=Last%20Updated&color=blue" alt="">
+    </div>
+
+    <!-- Language summary from GitHub API -->
+    <div style="background:var(--card);padding:16px;border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,0.06);">
+      <strong>Top languages (across my public repositories):</strong>
+
+      <div id="langs" style="margin-top:10px;color:var(--muted);">Loading languages…</div>
+      <div id="langsError" style="color:#d33;margin-top:8px;display:none;">Could not load languages (rate limit or network issue)</div>
+
+      <div style="margin-top:12px">
+        <a href="https://github.com/somguptaa" target="_blank" style="color:var(--accent);font-weight:700;text-decoration:none;">Visit GitHub →</a>
+      </div>
+    </div>
+
   </div>
 
 </section>
+
+
 
 
 <!-- CONTACT -->
@@ -208,62 +309,79 @@
 </section>
 
 
+
+
 <footer>
   © <span id="year"></span> Som Gupta • Hosted on GitHub Pages
 </footer>
 
 
+
+
 <script>
-  /* FOOTER YEAR */
-  document.getElementById("year").textContent = new Date().getFullYear();
+/* Year */
+document.getElementById("year").textContent = new Date().getFullYear();
 
-  /* TYPING EFFECT */
-  const typingEl = document.getElementById("typing");
-  const words = ["Java Developer", "Spring Boot Engineer", "Full Stack Developer", "API Developer"];
-  let wi = 0, ci = 0, del = false;
+/* Typing Effect */
+const typingEl = document.getElementById("typing");
+const words = ["Java Developer", "Spring Boot Engineer", "Full Stack Developer", "API Developer"];
+let wi = 0, ci = 0, del = false;
 
-  function type() {
-    let w = words[wi];
-    typingEl.textContent = del ? w.substring(0, ci--) : w.substring(0, ci++);
-    if (!del && ci === w.length){ del = true; setTimeout(type,900); return; }
-    if (del && ci === 0){ del = false; wi = (wi+1)%words.length; }
-    setTimeout(type, del ? 50 : 80);
-  }
-  type();
-
-  /* THEME + AUTO GITHUB STATS */
-  const toggleBtn = document.getElementById("themeToggle");
-
-  function loadStats(isDark){
-  const base = "https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api";
-
-  document.getElementById("statsImg").src =
-    isDark
-      ? `${base}?username=somguptaa&show_icons=true&theme=github_dark&hide_border=true`
-      : `${base}?username=somguptaa&show_icons=true&hide_border=true`;
-
-  document.getElementById("langsImg").src =
-    isDark
-      ? `${base}/top-langs/?username=somguptaa&layout=compact&theme=github_dark&hide_border=true`
-      : `${base}/top-langs/?username=somguptaa&layout=compact&hide_border=true`;
+function type() {
+  let w = words[wi];
+  typingEl.textContent = del ? w.substring(0, ci--) : w.substring(0, ci++);
+  if (!del && ci === w.length) { del = true; setTimeout(type, 900); return; }
+  if (del && ci === 0) { del = false; wi = (wi + 1) % words.length; }
+  setTimeout(type, del ? 50 : 80);
 }
+type();
 
+/* Theme Toggle */
+const toggleBtn = document.getElementById("themeToggle");
 
-  toggleBtn.addEventListener("click", () => {
-    const isDark = !document.documentElement.hasAttribute("data-theme");
+toggleBtn.addEventListener("click", () => {
+  const dark = !document.documentElement.hasAttribute("data-theme");
 
-    if (isDark) {
-      document.documentElement.setAttribute("data-theme","dark");
-      toggleBtn.textContent = "Light Mode";
-    } else {
-      document.documentElement.removeAttribute("data-theme");
-      toggleBtn.textContent = "Dark Mode";
+  if (dark) {
+    document.documentElement.setAttribute("data-theme", "dark");
+    toggleBtn.textContent = "Light Mode";
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+    toggleBtn.textContent = "Dark Mode";
+  }
+});
+
+/* Github Top Languages — API Based (No broken images) */
+(async function () {
+  const username = "somguptaa";
+  const langsEl = document.getElementById("langs");
+  const errEl = document.getElementById("langsError");
+
+  try {
+    const resp = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+    if (!resp.ok) throw new Error(resp.status);
+
+    const repos = await resp.json();
+    const counts = {};
+
+    for (const r of repos) {
+      const lang = r.language || "Other";
+      counts[lang] = (counts[lang] || 0) + 1;
     }
 
-    loadStats(isDark);
-  });
+    const sorted = Object.entries(counts)
+      .filter(([k]) => k !== "Other")
+      .sort((a, b) => b[1] - a[1]);
 
-  loadStats(false);
+    langsEl.innerHTML = sorted.slice(0, 6).map(([lang, count]) =>
+      `<span style="display:inline-block;padding:6px 10px;margin:6px;border-radius:999px;background:rgba(0,0,0,0.07);font-weight:600;">${lang} (${count})</span>`
+    ).join("");
+
+  } catch (e) {
+    langsEl.style.display = "none";
+    errEl.style.display = "block";
+  }
+})();
 </script>
 
 </body>
