@@ -89,6 +89,7 @@
     max-width: 800px;
     margin: auto;
     color: var(--muted);
+    line-height: 1.6;
   }
 
   .skills-grid {
@@ -267,23 +268,35 @@
 
 
 
-  <!-- UPDATED STATS (FIXED last updated badge) -->
-  <div id="reliable-stats" style="text-align:center; margin-top:50px; max-width:720px; margin-left:auto; margin-right:auto;">
+  <!-- ⭐ STATS SECTION -->
+  <div id="stats" style="text-align:center; margin-top:50px; max-width:720px; margin-left:auto; margin-right:auto;">
 
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+    <!-- Stable badges -->
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
       <img src="https://img.shields.io/github/followers/somguptaa?label=Followers&style=social" alt="">
-      <img src="https://img.shields.io/github/stars/somguptaa?label=Stars&style=social" alt="">
+      <img src="https://img.shields.io/github/stars/somguptaa/Online-BookStore?label=Stars&style=social" alt="">
       <img src="https://img.shields.io/github/last-commit/Som9889/som9889.github.io?label=Last%20Updated&color=blue" alt="">
     </div>
 
+    <!-- ⭐ Total Stars -->
+    <div id="totalStars" 
+      style="margin:14px 0;font-size:18px;font-weight:700;color:var(--accent);">
+      ⭐ Total Stars: Loading...
+    </div>
+
+    <!-- 🔤 Languages -->
     <div style="background:var(--card);padding:16px;border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,0.06);">
       <strong>Top languages (across my public repositories):</strong>
 
       <div id="langs" style="margin-top:10px;color:var(--muted);">Loading languages…</div>
-      <div id="langsError" style="color:#d33;margin-top:8px;display:none;">Could not load languages (rate limit or network issue)</div>
+      <div id="langsError" style="color:#d33;margin-top:8px;display:none;">
+        Could not load languages (rate limit or network issue)
+      </div>
 
       <div style="margin-top:12px">
-        <a href="https://github.com/somguptaa" target="_blank" style="color:var(--accent);font-weight:700;text-decoration:none;">Visit GitHub →</a>
+        <a href="https://github.com/somguptaa" target="_blank" style="color:var(--accent);font-weight:700;text-decoration:none;">
+          Visit GitHub →
+        </a>
       </div>
     </div>
 
@@ -349,7 +362,35 @@ toggleBtn.addEventListener("click", () => {
   }
 });
 
-/* Github Languages — API Based */
+/* ⭐ Total GitHub Stars */
+(async function () {
+  const username = "somguptaa";
+  const totalStarsEl = document.getElementById("totalStars");
+
+  try {
+    let stars = 0;
+    let page = 1;
+
+    while (true) {
+      const resp = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&page=${page}`);
+      if (!resp.ok) throw new Error("GitHub API error");
+
+      const repos = await resp.json();
+      if (repos.length === 0) break;
+
+      repos.forEach(r => stars += r.stargazers_count);
+      page++;
+    }
+
+    totalStarsEl.textContent = `⭐ Total Stars: ${stars}`;
+  } catch (e) {
+    totalStarsEl.textContent = "⭐ Total Stars: Failed to load";
+    totalStarsEl.style.color = "#c33";
+  }
+})();
+
+
+/* 🔤 GitHub Languages */
 (async function () {
   const username = "somguptaa";
   const langsEl = document.getElementById("langs");
