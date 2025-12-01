@@ -33,7 +33,6 @@
     background:var(--bg);
     color:var(--text);
     -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
     transition:background .25s,color .25s;
   }
 
@@ -43,12 +42,10 @@
     backdrop-filter:saturate(140%) blur(6px);
     display:flex;align-items:center;justify-content:space-between;
     gap:20px;padding:16px 28px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3));
-    border-bottom:1px solid rgba(0,0,0,0.04);
+    background:rgba(255,255,255,0.4);
   }
   [data-theme="dark"] nav{
-    background:linear-gradient(180deg, rgba(10,14,20,0.6), rgba(10,14,20,0.3));
-    border-bottom:1px solid rgba(255,255,255,0.03);
+    background:rgba(10,14,20,0.4);
   }
   .brand{font-weight:700;font-size:20px}
   .nav-links{display:flex;gap:18px;align-items:center}
@@ -57,7 +54,7 @@
 
   /* HERO */
   .hero{
-    min-height:72vh;
+    min-height:60vh;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -66,79 +63,57 @@
   }
   .hero-card{
     width:100%;
-    max-width:980px;
+    max-width:900px;
     background:var(--card);
     padding:36px;
     border-radius:12px;
     box-shadow:0 10px 30px rgba(2,6,23,0.08);
-    transform:translateY(0);
-    transition:transform .4s ease,box-shadow .3s;
   }
-  .hero-card:hover{transform:translateY(-6px)}
   .hero h1{font-size:34px;margin:0 0 8px}
   .hero .typing{color:var(--accent);font-weight:700}
-  .hero p{color:var(--muted);margin:6px 0 16px;line-height:1.6}
-  .hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .lead{color:var(--muted)}
+
   .btn{
-    display:inline-block;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:700;
-    background:var(--accent);color:white;box-shadow:0 6px 18px rgba(3,46,99,0.12);
+    padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:700;
+    background:var(--accent);color:white;
   }
-  .btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(0,0,0,0.06)}
+  .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
 
   /* SECTIONS */
   section{padding:64px 20px}
   .container{max-width:1100px;margin:0 auto}
+  h2.section-title{font-size:28px;text-align:center;margin-bottom:20px}
 
-  h2.section-title{
-    font-size:28px;text-align:center;margin-bottom:28px;position:relative;
-  }
-  .lead{max-width:900px;margin:0 auto;color:var(--muted);text-align:center;line-height:1.6}
-
-  /* Skills grid */
+  /* Skills */
   .skills-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:28px;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:28px;
   }
   .skill{
-    background:var(--card);padding:18px;border-radius:10px;text-align:center;font-weight:700;
+    background:var(--card);padding:16px;border-radius:10px;text-align:center;font-weight:700;
     box-shadow:0 6px 18px rgba(2,6,23,0.06);
   }
 
-  /* Projects */
+  /* Projects (no images) */
   .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
   .card{
-    background:var(--card);border-radius:10px;padding:16px;overflow:hidden;position:relative;
-    box-shadow:0 10px 30px rgba(2,6,23,0.06);transition:transform .25s ease;
+    background:var(--card);border-radius:10px;padding:20px;
+    box-shadow:0 10px 30px rgba(2,6,23,0.06);
   }
-  .card:hover{transform:translateY(-6px)}
-  .card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
-  .card h3{margin:12px 0 6px;color:var(--accent)}
-  .card p{color:var(--muted);line-height:1.5}
-  .card .buttons{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
-
-  /* GitHub stats area */
-  .stats-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:14px}
+  .card h3{margin:0 0 8px;color:var(--accent)}
+  .card p{color:var(--muted)}
+  .buttons{margin-top:12px;display:flex;gap:10px}
 
   /* Contact */
-  .contact-grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:720px;margin:18px auto}
-  @media(min-width:760px){ .contact-grid{grid-template-columns:1fr 360px} }
-  .input,textarea{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text)}
-  textarea{min-height:140px;resize:vertical}
-  .muted{color:var(--muted)}
-  .center{text-align:center}
+  .input,textarea{width:100%;padding:12px;border-radius:8px;border:1px solid #ddd;background:transparent;color:var(--text)}
+  textarea{min-height:140px}
 
-  footer{padding:18px;text-align:center;color:var(--muted);background:transparent;border-top:1px solid rgba(0,0,0,0.03)}
-
-  /* small helpers & animations */
-  .fade-up{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-  .inview{opacity:1;transform:translateY(0)}
-  .toggle{
-    padding:8px 10px;border-radius:8px;background:transparent;border:1px solid rgba(0,0,0,0.06);cursor:pointer;
-  }
-  .resume-badge{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(0,0,0,0.04);font-weight:700}
+  footer{text-align:center;padding:20px;color:var(--muted)}
 </style>
 </head>
 <body>
-<nav class="container" role="navigation" aria-label="main nav">
+
+<!-- NAVBAR -->
+<nav class="container">
   <div class="brand">Som Gupta</div>
   <div class="nav-links">
     <a href="#about">About</a>
@@ -147,21 +122,19 @@
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-actions">
-    <button id="themeToggle" class="toggle" title="Toggle dark/light">🌙</button>
-    <a id="resumeBtn" class="resume-badge" href="/Som-Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+    <button id="themeToggle">🌙</button>
+    <a class="btn ghost" href="/Som-Resume.pdf" target="_blank">Resume</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="hero-card fade-up" id="heroCard">
+  <div class="hero-card">
     <h1>Hello, I’m <span style="color:var(--accent)">Som Gupta</span></h1>
     <p><span id="typing" class="typing"></span></p>
-    <p class="lead">Java • Spring Boot • Full Stack (Java + JavaScript) • SQL / MongoDB — building web apps and APIs following clean architecture & SOLID principles.</p>
-    <div class="cta">
-      <a href="#projects" class="btn">View Projects</a>
-      <a href="https://github.com/somguptaa" target="_blank" class="btn ghost">GitHub</a>
-    </div>
+    <p class="lead">Java • Spring Boot • Full Stack • SQL / MongoDB • REST APIs</p>
+    <br>
+    <a href="#projects" class="btn">View Projects</a>
   </div>
 </header>
 
@@ -169,7 +142,7 @@
 <section id="about">
   <div class="container">
     <h2 class="section-title">About Me</h2>
-    <p class="lead fade-up">I build REST APIs and web applications using Java, Spring Boot, SQL and JavaScript. I focus on writing maintainable, well-tested code and learning modern tooling: Docker, JWT Security, and microservices patterns.</p>
+    <p class="lead">I build REST APIs and web apps using Java, Spring Boot, SQL, MongoDB, and JavaScript. I follow clean architecture and modern engineering practices.</p>
   </div>
 </section>
 
@@ -177,7 +150,7 @@
 <section id="skills">
   <div class="container">
     <h2 class="section-title">Skills</h2>
-    <div class="skills-grid fade-up">
+    <div class="skills-grid">
       <div class="skill">Java</div>
       <div class="skill">Spring Boot</div>
       <div class="skill">JPA / Hibernate</div>
@@ -194,41 +167,37 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS (NO IMAGES) -->
 <section id="projects">
   <div class="container">
     <h2 class="section-title">Projects</h2>
-    <div class="project-grid fade-up">
+
+    <div class="project-grid">
+
       <div class="card">
-      <img src="https://cdn.pixabay.com/photo/2015/09/05/21/51/reading-923882_1280.jpg" 
-     alt="Online Bookstore" />
         <h3>Online BookStore</h3>
-        <p>A full application with auth, book catalog, cart, orders and reviews. Uses JWT, Spring Boot, MySQL & MongoDB.</p>
+        <p>REST API app with JWT auth, catalog, cart, orders & reviews. Built using Spring Boot, MySQL, MongoDB.</p>
         <div class="buttons">
-          <a class="btn ghost" href="https://github.com/somguptaa/Online-BookStore" target="_blank">View Repo</a>
-          <a class="btn" href="https://github.com/somguptaa/Online-BookStore" target="_blank">Live (if deployed)</a>
+          <a class="btn ghost" href="https://github.com/somguptaa/Online-BookStore" target="_blank">Repository</a>
         </div>
       </div>
 
       <div class="card">
-       <img src="https://cdn.pixabay.com/photo/2016/03/27/22/16/classroom-1284720_1280.jpg" 
-     alt="School Management System" />
         <h3>School Management System</h3>
-        <p>Production-ready school APIs with JWT-based role access, CRUD modules and Swagger docs.</p>
+        <p>School admin APIs with role-based JWT security, CRUD modules & MySQL integration.</p>
         <div class="buttons">
-          <a class="btn ghost" href="#" target="_blank">View Repo</a>
-          <a class="btn" href="#" target="_blank">Demo (if deployed)</a>
+          <a class="btn ghost" href="#" target="_blank">Repository</a>
         </div>
       </div>
 
-      <!-- add more cards as needed -->
     </div>
 
-    <!-- GitHub stats -->
-    <div class="stats-row" style="margin-top:22px">
-      <!-- GitHub Readme Stats images (auto) -->
-      <img src="https://github-readme-stats.vercel.app/api?username=somguptaa&show_icons=true&hide_border=true" alt="GitHub Stats" style="max-width:420px;border-radius:10px">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=somguptaa&layout=compact&hide_border=true" alt="Top Languages" style="max-width:320px;border-radius:10px">
+    <br><br>
+
+    <!-- GitHub Stats -->
+    <div style="text-align:center;">
+      <img src="https://github-readme-stats.vercel.app/api?username=somguptaa&show_icons=true&hide_border=true" style="max-width:420px;margin:5px;">
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=somguptaa&layout=compact&hide_border=true" style="max-width:320px;margin:5px;">
     </div>
 
   </div>
@@ -238,139 +207,49 @@
 <section id="contact">
   <div class="container">
     <h2 class="section-title">Contact</h2>
-    <div class="contact-grid fade-up">
-      <div>
-        <p class="muted">Want to collaborate or have a question? Send a message — I'll reply soon.</p>
 
-        <form id="contactForm">
-          <input name="from_name" class="input" placeholder="Your name" required><br><br>
-          <input name="reply_to" class="input" type="email" placeholder="Your email" required><br><br>
-          <input name="subject" class="input" placeholder="Subject" required><br><br>
-          <textarea name="message" placeholder="Message" required></textarea><br><br>
-          <div style="display:flex;gap:10px">
-            <button type="submit" class="btn">Send Message</button>
-            <button type="reset" class="btn ghost">Reset</button>
-          </div>
-          <p id="formStatus" class="muted" style="margin-top:10px"></p>
-        </form>
-      </div>
+    <form style="max-width:600px;margin:auto;">
+      <input class="input" placeholder="Your name">
+      <br><br>
+      <input class="input" placeholder="Your email">
+      <br><br>
+      <textarea class="input" placeholder="Your message"></textarea>
+      <br><br>
+      <button class="btn">Send Message</button>
+    </form>
 
-      <div style="padding:18px;background:var(--card);border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.06)">
-        <h3>Contact Info</h3>
-        <p class="muted">Email: <strong>somgupta0011@gmail.com</strong></p>
-        <p class="muted">LinkedIn: <a href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank">Som Gupta</a></p>
-        <p class="muted">GitHub: <a href="https://github.com/somguptaa" target="_blank">somguptaa</a></p>
-        <div style="margin-top:10px">
-          <a class="btn ghost" href="/Som-Resume.pdf" target="_blank">Download Resume</a>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
 <footer>
-  © <span id="year"></span> Som Gupta • Built with ❤️ • <span class="muted">Hosted on GitHub Pages</span>
+  © <span id="year"></span> Som Gupta • Hosted on GitHub Pages
 </footer>
 
-<!-- SCRIPTS -->
 <script>
-  /* ========== Theme toggle (saves preference) ========== */
-  const toggleBtn = document.getElementById('themeToggle');
-  const root = document.documentElement;
-  const storedTheme = localStorage.getItem('theme');
-  if(storedTheme) document.documentElement.setAttribute('data-theme', storedTheme);
-  updateToggleUI();
-  toggleBtn.addEventListener('click', ()=>{
-    const cur = document.documentElement.getAttribute('data-theme');
-    const next = cur === 'dark' ? '' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    updateToggleUI();
+  /* Year */
+  document.getElementById("year").innerText = new Date().getFullYear();
+
+  /* Simple Theme Toggle */
+  const toggleBtn = document.getElementById("themeToggle");
+  toggleBtn.addEventListener("click", () => {
+    document.documentElement.toggleAttribute("data-theme");
+    toggleBtn.textContent =
+      document.documentElement.getAttribute("data-theme") === "dark" ? "☀️" : "🌙";
   });
-  function updateToggleUI(){
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    toggleBtn.textContent = isDark ? '☀️' : '🌙';
+
+  /* Typing Effect */
+  const typingEl = document.getElementById("typing");
+  const phrases = ["Java Developer", "Spring Boot Engineer", "Full Stack Developer", "API Developer"];
+  let pi = 0, ci = 0, del = false;
+  function type() {
+    let txt = phrases[pi];
+    typingEl.innerText = del ? txt.substring(0, ci--) : txt.substring(0, ci++);
+    if (!del && ci === txt.length) { del = true; setTimeout(type, 800); return; }
+    if (del && ci === 0) { del = false; pi = (pi + 1) % phrases.length; }
+    setTimeout(type, del ? 50 : 80);
   }
-
-  /* ========== Typing effect ========== */
-  const typingEl = document.getElementById('typing');
-  const phrases = ['Java Developer', 'Spring Boot • REST APIs', 'Full Stack (Java + JS)', 'Microservices | Docker'];
-  let pi = 0, ci = 0, deleting = false;
-  function tick(){
-    const full = phrases[pi];
-    if(!deleting){
-      typingEl.textContent = full.slice(0, ++ci);
-      if(ci === full.length){ deleting = true; setTimeout(tick, 900); return; }
-    } else {
-      typingEl.textContent = full.slice(0, --ci);
-      if(ci === 0){ deleting = false; pi = (pi+1)%phrases.length; setTimeout(tick, 200); return; }
-    }
-    setTimeout(tick, deleting ? 50 : 90);
-  }
-  tick();
-
-  /* ========== simple fade-in when in view ========== */
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting) e.target.classList.add('inview');
-    });
-  },{threshold:0.12});
-  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
-
-  /* ========== year update ========== */
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  /* ========== Contact form via EmailJS ==========
-     - Create an account at https://www.emailjs.com/
-     - Create EMAIL SERVICE, EMAIL TEMPLATE (with variables: from_name, reply_to, subject, message)
-     - Get your user id (or public key), service id and template id.
-     - Replace the placeholders below.
-  ================================================== */
-  // ====== IMPORTANT: Replace these with your values ======
-  const EMAILJS_SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID";
-  const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID";
-  const EMAILJS_USER_ID = "YOUR_EMAILJS_USER_ID"; // also called public key
-  // ======================================================
-
-  // If you want I can prefill these for you if you give me your EmailJS IDs.
-  (function(){
-    // load emailjs sdk if configured by user
-    if(EMAILJS_USER_ID && EMAILJS_USER_ID !== 'YOUR_EMAILJS_USER_ID'){
-      const s = document.createElement('script');
-      s.src = "https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js";
-      s.onload = ()=>{ emailjs.init(EMAILJS_USER_ID); }
-      document.head.appendChild(s);
-    }
-  })();
-
-  const contactForm = document.getElementById('contactForm');
-  contactForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    const status = document.getElementById('formStatus');
-    status.textContent = 'Sending...';
-    // If EmailJS not set, fallback to mailto
-    if(EMAILJS_SERVICE_ID === "YOUR_EMAILJS_SERVICE_ID" || EMAILJS_TEMPLATE_ID === "YOUR_EMAILJS_TEMPLATE_ID"){
-      // fallback: open default mail app with prefilled message
-      const formData = new FormData(contactForm);
-      const name = encodeURIComponent(formData.get('from_name'));
-      const subject = encodeURIComponent(formData.get('subject'));
-      const body = encodeURIComponent('Name: '+formData.get('from_name') + '\\nEmail: ' + formData.get('reply_to') + '\\n\\n' + formData.get('message'));
-      window.location.href = `mailto:somgupta0011@gmail.com?subject=${subject}&body=${body}`;
-      status.textContent = 'Opened your mail client as fallback. Or configure EmailJS for direct sending.';
-      return;
-    }
-
-    // If EmailJS is configured: send via emailjs
-    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
-      .then(()=>{ status.textContent = 'Message sent — thank you!'; contactForm.reset(); })
-      .catch((err)=>{ console.error(err); status.textContent = 'Error sending message. Using fallback mailto.'; 
-        // fallback
-        const formData = new FormData(contactForm);
-        const subject = encodeURIComponent(formData.get('subject'));
-        const body = encodeURIComponent('Name: '+formData.get('from_name') + '\\nEmail: ' + formData.get('reply_to') + '\\n\\n' + formData.get('message'));
-        window.location.href = `mailto:somgupta0011@gmail.com?subject=${subject}&body=${body}`;
-      });
-  });
+  type();
 </script>
+
 </body>
 </html>
