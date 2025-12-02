@@ -5,20 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Som Gupta — Java & Full Stack Developer</title>
 
-<!-- SEO & Social -->
-<meta name="description" content="Som Gupta — Java | Spring Boot | Full Stack (Java + JavaScript). Backend & full-stack engineer building REST APIs and web apps." />
-<meta name="keywords" content="Som Gupta, Java Developer, Spring Boot, REST API, Full Stack, JavaScript, MySQL, MongoDB, GitHub" />
-<meta property="og:title" content="Som Gupta — Java & Full Stack Developer" />
-<meta property="og:description" content="Java | Spring Boot | Full Stack (Java + JavaScript) — REST APIs & web apps." />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://raw.githubusercontent.com/Som9889/som9889.github.io/main/social-preview.png" />
-<meta name="twitter:card" content="summary_large_image" />
-
-<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ---------- ROOT VARIABLES ---------- */
+/* ---------- ROOT ---------- */
 :root{
   --bg:#f5f7fc;
   --card:#ffffff;
@@ -27,6 +17,7 @@
   --accent:#0077ff;
   --glass: rgba(255,255,255,0.26);
   --max-width:1100px;
+  --soft-border: rgba(0,0,0,0.04);
 }
 [data-theme="dark"]{
   --bg:#070912;
@@ -35,54 +26,73 @@
   --muted:#9fb0d1;
   --accent:#60a5fa;
   --glass: rgba(16,24,40,0.28);
+  --soft-border: rgba(255,255,255,0.04);
 }
 
-/* ---------- BASE ---------- */
 html,body{
   margin:0;
   font-family:'Poppins',sans-serif;
   background:var(--bg);
   color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  transition:background .25s,color .25s;
   scroll-behavior:smooth;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-font-smoothing:antialiased;
 }
-img{max-width:100%}
-a{text-decoration:none;color:inherit}
 
-/* Skip-link */
-.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
-.skip-link:focus{left:12px;top:12px;background:#000;color:#fff;padding:8px 14px;border-radius:6px;z-index:1000}
+/* ---------- SMOOTH SECTION FADE SEPARATOR ---------- */
+.panel::before{
+  content:"";
+  display:block;
+  height:45px;
+  margin-bottom:25px;
+  background:linear-gradient(to bottom, transparent, rgba(0,0,0,0.06));
+  border-radius:20px;
+  opacity:.25;
+}
 
 /* ---------- BACKGROUND WAVES ---------- */
-.bg-wrap{position:fixed;inset:0;z-index:-2;overflow:hidden}
-.gradient-wave{position:absolute;left:-15%;right:-15%;height:60vh;border-radius:50%;filter:blur(60px);opacity:.24;animation:waveMove 14s linear infinite}
+.bg-wrap{
+  position:fixed;inset:0;
+  z-index:-2;
+  overflow:hidden;
+}
+.gradient-wave{
+  position:absolute;
+  left:-15%;right:-15%;
+  height:60vh;
+  opacity:.23;
+  filter:blur(60px);
+  border-radius:50%;
+  animation:waveMove 14s linear infinite;
+}
 .wave-1{background:linear-gradient(90deg,#60a5fa,#7dd3fc)}
-.wave-2{background:linear-gradient(90deg,#a78bfa,#7c3aed);top:22%;opacity:.18}
-.wave-3{background:linear-gradient(90deg,#34d399,#60a5fa);top:44%;opacity:.13}
+.wave-2{background:linear-gradient(90deg,#a78bfa,#7c3aed);top:22%;opacity:.16}
+.wave-3{background:linear-gradient(90deg,#34d399,#60a5fa);top:42%;opacity:.14}
+
 @keyframes waveMove{
-  0%{transform:translateX(-15%) translateY(-8%) scale(1)}
-  50%{transform:translateX(15%) translateY(-12%) scale(1.04)}
-  100%{transform:translateX(-15%) translateY(-8%) scale(1)}
+  0%{transform:translateX(-15%) translateY(-8%)}
+  50%{transform:translateX(15%) translateY(-12%)}
+  100%{transform:translateX(-15%) translateY(-8%)}
 }
 
-/* ---------- PANELS (Soft Fade Glass) ---------- */
+/* ---------- PANELS ---------- */
 .panel{
-  background:linear-gradient(to bottom,
-      rgba(255,255,255,0.55),
-      rgba(255,255,255,0.35)
-  );
-  backdrop-filter:blur(8px);
-  border-radius:12px;
-  padding:48px 20px;
-  margin:36px auto;
-  border:1px solid rgba(255,255,255,0.28);
   max-width:var(--max-width);
+  margin:40px auto;
+  padding:48px 24px;
+  border-radius:14px;
+  background:linear-gradient(to bottom,
+    rgba(255,255,255,0.55),
+    rgba(255,255,255,0.32)
+  );
+  border:1px solid rgba(255,255,255,0.25);
+  backdrop-filter:blur(7px);
 }
 [data-theme="dark"] .panel{
   background:linear-gradient(to bottom,
-      rgba(15,23,36,0.48),
-      rgba(15,23,36,0.28)
+    rgba(15,23,36,0.52),
+    rgba(15,23,36,0.28)
   );
   border:1px solid rgba(255,255,255,0.12);
 }
@@ -91,151 +101,194 @@ a{text-decoration:none;color:inherit}
 nav{
   position:sticky;
   top:0;
-  z-index:70;
+  z-index:100;
+  padding:12px 18px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:14px 22px;
+  gap:12px;
   backdrop-filter:blur(8px);
-  background:linear-gradient(180deg,rgba(255,255,255,0.45),rgba(255,255,255,0.18));
+  background:linear-gradient(180deg,
+    rgba(255,255,255,0.45),
+    rgba(255,255,255,0.18)
+  );
 }
 [data-theme="dark"] nav{
-  background:linear-gradient(180deg,rgba(6,10,18,0.45),rgba(6,10,18,0.18));
+  background:linear-gradient(180deg,
+    rgba(6,10,18,0.45),
+    rgba(6,10,18,0.18)
+  );
 }
-.nav-links{display:flex;gap:16px}
-.nav-links a{padding:6px 8px;border-radius:6px;font-weight:600}
+
+.brand{font-weight:800}
+.nav-links{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.nav-links a{
+  font-weight:600;
+  color:var(--text);
+}
 .nav-actions{display:flex;gap:10px;align-items:center}
 
-/* Hamburger (Fixed for dark mode) */
-.hamburger{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  width:42px;
-  height:42px;
-  font-size:22px;
-  border-radius:10px;
-  cursor:pointer;
-  background:var(--glass);
-  color:var(--text) !important;
-  border:1px solid rgba(255,255,255,0.25);
-}
-[data-theme="dark"] .hamburger{
-  border:1px solid rgba(255,255,255,0.35);
+/* responsive */
+@media (max-width:980px){
+  .nav-links{display:none}
 }
 
-/* Resume button */
+/* hamburger */
+.hamburger{
+  width:42px;height:42px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:10px;
+  background:var(--glass);
+  border:1px solid var(--soft-border);
+  cursor:pointer;
+  color:var(--text);
+  font-size:20px;
+}
+
+/* resume/toggle */
 .resume-btn{
   padding:8px 14px;
   border-radius:10px;
   font-weight:700;
-  color:var(--accent);
-  border:2px solid rgba(0,119,255,0.35);
   background:var(--glass);
-  backdrop-filter:blur(6px);
-}
-
-/* Toggle button */
-.toggle-btn{
-  padding:8px 12px;
-  border-radius:8px;
-  border:1px solid var(--accent);
-  background:transparent;
+  border:2px solid rgba(0,119,255,0.35);
   color:var(--accent);
-  cursor:pointer;
-  font-weight:700;
 }
-
-/* Hide nav links in mobile */
-@media(max-width:980px){
-  .nav-links{display:none}
-}
-
-/* ---------- SIDEBAR ---------- */
-.overlay{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,0.45);
-  opacity:0;pointer-events:none;
-  transition:opacity .3s;
-  z-index:68;
-}
-.overlay.show{opacity:1;pointer-events:auto}
-
-.sidebar{
-  position:fixed;
-  top:0;
-  right:-360px;
-  width:310px;
-  height:100vh;
-  padding:26px;
-  background:var(--card);
-  box-shadow:-14px 0 40px rgba(2,6,23,0.12);
-  transition:right .32s ease;
-  z-index:70;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
-.sidebar.show{right:0}
-.sidebar a{padding:10px;font-weight:700;border-radius:6px}
-.close-btn{
-  align-self:flex-end;
-  padding:6px 10px;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,0.15);
-  background:transparent;
-  cursor:pointer;
+.toggle-btn{
+  padding:8px 10px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);
+  cursor:pointer;font-weight:700;
 }
 
 /* ---------- HERO ---------- */
 .hero{
-  min-height:60vh;
+  min-height:62vh;
   display:flex;
-  align-items:center;
   justify-content:center;
-  padding:40px 20px;
+  align-items:center;
+  padding:44px 18px;
   text-align:center;
 }
 .hero-card{
-  max-width:900px;
-  padding:34px;
-  background:var(--card);
-  border-radius:14px;
-  box-shadow:0 12px 38px rgba(2,6,23,0.08);
+  max-width:920px;background:var(--card);padding:34px;border-radius:14px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.08);
 }
-.hero h1{margin:0 0 12px;font-size:32px}
-.typing{font-weight:700;color:var(--accent)}
-.lead{max-width:740px;margin:10px auto;color:var(--muted);line-height:1.6}
+.typing{font-weight:700;color:var(--accent);min-height:28px}
+.lead{color:var(--muted);max-width:720px;margin:10px auto;line-height:1.6}
 
-/* ---------- REVEAL ANIMATION ---------- */
-.reveal{
-  opacity:0;
-  transform:translateY(18px);
-  transition:opacity .6s ease,transform .6s ease;
+/* ---------- SKILLS GRID ---------- */
+.skills-grid{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:18px;
 }
-.reveal.inview{
-  opacity:1;
-  transform:translateY(0);
+.skill{
+  background:var(--card);
+  padding:16px;
+  text-align:center;
+  font-weight:700;
+  border-radius:12px;
+  box-shadow:0 8px 22px rgba(0,0,0,0.06);
+  transition:0.25s;
+}
+.skill:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* ---------- PROJECT GRID & CARD ---------- */
+.project-grid{
+  max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;
+}
+.card{
+  background:var(--card);border-radius:12px;padding:18px;box-shadow:0 10px 26px rgba(0,0,0,0.06);transition:transform .25s;
+}
+.card h3{color:var(--accent);margin:6px 0}
+.card p{color:var(--muted);line-height:1.5}
+.card:hover{transform:translateY(-6px)}
+
+/* ---------- TIMELINE & EDUCATION ---------- */
+.timeline-item{border-left:3px solid rgba(0,0,0,0.06);padding:12px 16px;margin:16px 0 16px 16px}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;max-width:900px;margin:auto}
+.edu-card{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 8px 26px rgba(0,0,0,0.06)}
+
+/* ---------- CONTACT / FORM ---------- */
+.input, textarea{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,0.08);
+  background:transparent;color:var(--text);
+  font-size:14px;
+}
+textarea{min-height:120px;resize:vertical}
+
+/* icon buttons */
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--text)}
+
+/* muted */
+.muted{color:var(--muted)}
+
+/* ---------- SIDEBAR ---------- */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.45);opacity:0;pointer-events:none;transition:opacity .28s;z-index:98;
+}
+.overlay.show{opacity:1;pointer-events:auto}
+.sidebar{
+  position:fixed;right:-360px;top:0;height:100vh;width:320px;padding:22px;background:var(--card);box-shadow:-14px 0 40px rgba(0,0,0,0.12);
+  transition:right .32s ease;z-index:99;border-left:1px solid var(--soft-border);
+}
+.sidebar.show{right:0}
+.close-btn{
+  align-self:flex-end;padding:8px 10px;border-radius:8px;border:1px solid var(--soft-border);background:transparent;cursor:pointer;
+}
+
+/* ---------- REVEAL / INVIEW ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.inview{opacity:1;transform:translateY(0)}
+
+/* ---------- SCROLL TOP BUTTON ---------- */
+#scrollTopBtn{transition:transform .18s ease}
+#scrollTopBtn:hover{transform:translateY(-4px)}
+
+/* ---------- MISC ---------- */
+.section-title{text-align:center;font-size:28px;font-weight:700;margin-bottom:18px}
+@media (max-width:720px){
+  .panel{padding:28px 16px;margin:24px 12px}
+  nav{padding:10px 12px}
+  .hero{padding:28px 12px}
+  .resume-btn{display:none} /* smaller screens hide resume in header (user still can get from sidebar) */
+  .skills-grid{gap:12px}
+  .project-grid{gap:12px}
+  .sidebar{width:84%;right:-100%}
+  .sidebar.show{right:0}
+  #scrollTopBtn{right:16px;bottom:18px;width:46px;height:46px}
 }
 </style>
 </head>
 
 <body>
 
-<a href="#hero" class="skip-link">Skip to content</a>
-
-<!-- WAVES -->
-<div class="bg-wrap">
+<!-- BACKGROUND WAVES -->
+<div class="bg-wrap" aria-hidden="true">
   <div class="gradient-wave wave-1"></div>
   <div class="gradient-wave wave-2"></div>
   <div class="gradient-wave wave-3"></div>
 </div>
 
 <!-- NAV -->
-<nav>
+<nav role="navigation" aria-label="main navigation">
   <div class="brand">Som Gupta</div>
 
-  <div class="nav-links">
+  <div class="nav-links" aria-hidden="false">
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
@@ -243,121 +296,103 @@ nav{
     <a href="#contact">Contact</a>
   </div>
 
-  <div class="nav-actions">
-    <a class="resume-btn" href="Som-Resume.pdf" download>Resume</a>
-    <button id="hamburger" class="hamburger" aria-label="Menu">☰</button>
-    <button id="themeToggle" class="toggle-btn">Dark Mode</button>
+  <div class="nav-actions" role="toolbar" aria-label="actions">
+    <a class="resume-btn" href="Som-Resume.pdf" download aria-label="Download resume">Resume</a>
+    <button id="hamburger" class="hamburger" aria-label="Open menu">☰</button>
+    <button id="themeToggle" class="toggle-btn" aria-pressed="false">Dark Mode</button>
   </div>
 </nav>
 
 <!-- SIDEBAR -->
-<div id="overlay" class="overlay"></div>
-<aside id="sidebar" class="sidebar">
-  <button id="closeSidebar" class="close-btn">✕</button>
-  <a href="#about" class="sidebar-link">About</a>
-  <a href="#skills" class="sidebar-link">Skills</a>
-  <a href="#projects" class="sidebar-link">Projects</a>
-  <a href="#experience" class="sidebar-link">Experience</a>
-  <a href="#contact" class="sidebar-link">Contact</a>
+<div id="overlay" class="overlay" aria-hidden="true"></div>
+<aside id="sidebar" class="sidebar" role="menu" aria-hidden="true">
+  <button id="closeSidebar" class="close-btn" aria-label="Close menu">✕</button>
+  <nav style="margin-top:10px;display:flex;flex-direction:column;gap:10px">
+    <a href="#about" class="sidebar-link">About</a>
+    <a href="#skills" class="sidebar-link">Skills</a>
+    <a href="#projects" class="sidebar-link">Projects</a>
+    <a href="#experience" class="sidebar-link">Experience</a>
+    <a href="#contact" class="sidebar-link">Contact</a>
+    <a href="Som-Resume.pdf" download class="sidebar-link" style="margin-top:8px;font-weight:800;color:var(--accent)">Download Resume</a>
+  </nav>
 </aside>
 
 <!-- HERO -->
 <section id="hero" class="hero">
-  <div class="hero-card reveal">
+  <div class="hero-card reveal" role="region" aria-label="Introduction">
     <h1>Hello, I'm <span style="color:var(--accent)">Som Gupta</span></h1>
-    <p id="typing" class="typing"></p>
-    <p class="lead">
-      Java • Spring Boot • Full Stack (Java + JavaScript) • SQL • MongoDB • REST APIs
-    </p>
+    <p id="typing" class="typing" aria-live="polite"></p>
+    <p class="lead">Java • Spring Boot • Full Stack (Java + JavaScript) • SQL • MongoDB • REST APIs</p>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="panel reveal">
-  <h2 style="text-align:center;margin-bottom:14px">About Me</h2>
-  <p class="lead" style="text-align:center">
+<section id="about" class="panel reveal" aria-labelledby="about-heading">
+  <h2 id="about-heading" class="section-title">About Me</h2>
+  <p class="lead" style="text-align:center;">
     I develop modern web applications and REST APIs using Java, Spring Boot, SQL, MongoDB, and JavaScript.
     I focus on clean architecture, SOLID principles, and writing maintainable, scalable backend systems.
   </p>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="panel reveal">
-  <h2 style="text-align:center;margin-bottom:20px">Skills</h2>
+<section id="skills" class="panel reveal" aria-labelledby="skills-heading">
+  <h2 id="skills-heading" class="section-title">Skills</h2>
 
-  <div class="skills-grid">
-    <div class="skill">Java</div>
-    <div class="skill">Spring Boot</div>
-    <div class="skill">Hibernate / JPA</div>
-    <div class="skill">MySQL</div>
-    <div class="skill">Oracle</div>
-    <div class="skill">MongoDB</div>
-    <div class="skill">JavaScript</div>
-    <div class="skill">HTML / CSS</div>
-    <div class="skill">Docker</div>
-    <div class="skill">Git & GitHub</div>
-    <div class="skill">Swagger / Postman</div>
-    <div class="skill">JUnit / Mockito</div>
+  <div class="skills-grid" role="list">
+    <div class="skill" role="listitem">Java</div>
+    <div class="skill" role="listitem">Spring Boot</div>
+    <div class="skill" role="listitem">Hibernate / JPA</div>
+    <div class="skill" role="listitem">MySQL</div>
+    <div class="skill" role="listitem">Oracle</div>
+    <div class="skill" role="listitem">MongoDB</div>
+    <div class="skill" role="listitem">JavaScript</div>
+    <div class="skill" role="listitem">HTML</div>
+    <div class="skill" role="listitem">CSS</div>
+    <div class="skill" role="listitem">Docker</div>
+    <div class="skill" role="listitem">Git & GitHub</div>
+    <div class="skill" role="listitem">Swagger / Postman</div>
+    <div class="skill" role="listitem">JUnit / Mockito</div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="panel reveal">
-  <h2 style="text-align:center;margin-bottom:20px">Projects</h2>
+<section id="projects" class="panel reveal" aria-labelledby="projects-heading">
+  <h2 id="projects-heading" class="section-title">Projects</h2>
 
   <div class="project-grid">
-    <div class="card">
+    <div class="card" role="article">
       <h3>Online BookStore</h3>
-      <p>
-        REST API application with JWT authentication, user roles, catalog, cart, orders & reviews.
-        Built with Spring Boot, MySQL, MongoDB, Swagger.
-      </p>
-      <a href="https://github.com/somguptaa/Online-BookStore"
-         target="_blank"
-         class="resume-btn"
-         style="padding:8px 14px;margin-top:14px;display:inline-block">
-         Repository
-      </a>
+      <p>REST API application with JWT authentication, user roles, catalog, cart, orders & reviews. Built with Spring Boot, MySQL, MongoDB, Swagger.</p>
+      <a href="https://github.com/somguptaa/Online-BookStore" target="_blank" class="resume-btn" style="margin-top:14px;display:inline-block;padding:8px 14px;">Repository</a>
     </div>
 
-    <div class="card">
+    <div class="card" role="article">
       <h3>School Management System</h3>
-      <p>
-        Backend system supporting authentication, multiple roles (Admin, Teachers, Students),
-        CRUD modules & Swagger documentation. Built using Spring Boot + MySQL.
-      </p>
-      <a href="#"
-         class="resume-btn"
-         style="padding:8px 14px;margin-top:14px;display:inline-block">
-         Repository
-      </a>
+      <p>Backend system supporting authentication, multiple roles (Admin, Teachers, Students), CRUD modules & Swagger documentation. Built using Spring Boot + MySQL.</p>
+      <a href="#" class="resume-btn" style="margin-top:14px;display:inline-block;padding:8px 14px;">Repository</a>
     </div>
   </div>
 
   <!-- GitHub Stats -->
-  <div style="text-align:center;margin-top:40px">
-    <img src="https://img.shields.io/github/followers/somguptaa?label=Followers&style=social" alt="">
-    <img src="https://img.shields.io/github/stars/somguptaa/Online-BookStore?label=Stars&style=social" alt="">
-    <img src="https://img.shields.io/github/last-commit/Som9889/som9889.github.io?label=Last%20Updated&color=blue" alt="">
+  <div style="text-align:center;margin-top:36px">
+    <img src="https://img.shields.io/github/followers/somguptaa?label=Followers&style=social" alt="Followers">
+    <img src="https://img.shields.io/github/stars/somguptaa/Online-BookStore?label=Stars&style=social" alt="Stars">
+    <img src="https://img.shields.io/github/last-commit/Som9889/som9889.github.io?label=Last%20Updated&color=blue" alt="Last commit">
 
-    <div id="totalStars"
-         style="margin-top:12px;font-weight:700;color:var(--accent)">
-         ⭐ Total Stars: Loading...
-    </div>
+    <div id="totalStars" style="margin-top:12px;font-weight:700;color:var(--accent)">⭐ Total Stars: Loading...</div>
 
-    <div style="margin-top:18px;background:var(--card);padding:18px;border-radius:10px;display:inline-block">
+    <div style="margin-top:18px;background:var(--card);padding:14px;border-radius:10px;display:inline-block">
       <strong>Top Languages:</strong>
-      <div id="langs"
-           style="margin-top:10px;color:var(--muted)">Loading…</div>
-      <div id="langsError"
-           style="display:none;color:#c33;margin-top:10px">Failed to load</div>
+      <div id="langs" style="margin-top:10px;color:var(--muted)">Loading…</div>
+      <div id="langsError" style="display:none;color:#c33;margin-top:10px">Failed to load</div>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience" class="panel reveal">
-  <h2 style="text-align:center;margin-bottom:20px">Experience</h2>
+<section id="experience" class="panel reveal" aria-labelledby="experience-heading">
+  <h2 id="experience-heading" class="section-title">Experience</h2>
 
   <div class="timeline-item">
     <h3>Online BookStore — Lead Developer</h3>
@@ -376,219 +411,209 @@ nav{
 </section>
 
 <!-- EDUCATION -->
-<section id="education" class="panel reveal">
-  <h2 style="text-align:center;margin-bottom:20px">Education</h2>
+<section id="education" class="panel reveal" aria-labelledby="education-heading">
+  <h2 id="education-heading" class="section-title">Education</h2>
 
   <div class="edu-grid">
-    <div class="edu-card">
-      <strong>B.C.A — MGCGV</strong>
-      <p class="muted">2025 — CGPA: 8.4</p>
-    </div>
-
-    <div class="edu-card">
-      <strong>Class XII — U.P. Board</strong>
-      <p class="muted">2021 — 57.8%</p>
-    </div>
-
-    <div class="edu-card">
-      <strong>Class X — U.P. Board</strong>
-      <p class="muted">2018 — 61.5%</p>
-    </div>
+    <div class="edu-card"><strong>B.C.A — MGCGV</strong><p class="muted">2025 • CGPA: 8.4</p></div>
+    <div class="edu-card"><strong>Class XII — U.P. Board</strong><p class="muted">2021 • 57.8%</p></div>
+    <div class="edu-card"><strong>Class X — U.P. Board</strong><p class="muted">2018 • 61.5%</p></div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="panel reveal">
-  <h2 style="text-align:center;margin-bottom:25px">Contact</h2>
+<section id="contact" class="panel reveal" aria-labelledby="contact-heading">
+  <h2 id="contact-heading" class="section-title">Contact</h2>
 
   <div style="max-width:900px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px">
 
-    <!-- Info Card -->
-    <div style="background:var(--card);padding:22px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.06)">
+    <!-- Info Block -->
+    <div style="background:var(--card);padding:22px;border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,0.06)">
       <h3>Get in Touch</h3>
-      <p class="muted">Feel free to contact me for collaboration, freelance work, or project discussion.</p>
+      <p class="muted">Feel free to reach out for collaborations, discussions, or project inquiries.</p>
 
-      <p><strong>Email:</strong> somgupta0011@gmail.com</p>
+      <p><strong>Email:</strong> <a href="mailto:somgupta0011@gmail.com">somgupta0011@gmail.com</a></p>
       <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank">Som Gupta</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/somguptaa" target="_blank">somguptaa</a></p>
-<div style="margin-top:14px; display:flex; gap:12px;">
 
-  <!-- Email Icon -->
-  <a class="icon-btn" href="mailto:somgupta0011@gmail.com" title="Email">
-    <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 
-      1.1.9 2 2 2h16c1.1 0 2-.9 
-      2-2V6c0-1.1-.9-2-2-2zm0 
-      4-8 5-8-5V6l8 5 8-5v2z"/>
-    </svg>
-  </a>
+      <!-- ICONS -->
+      <div style="margin-top:14px; display:flex; gap:14px;">
 
-  <!-- GitHub Icon -->
-  <a class="icon-btn" href="https://github.com/somguptaa" target="_blank" title="GitHub">
-    <svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
-      <path d="M8 0C3.58 0 0 3.58 0 
-      8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
-      0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
-      -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 
-      2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
-      0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 
-      0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 
-      2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 
-      1.92.08 2.12.51.56.82 1.27.82 2.15 
-      0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 
-      1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 
-      8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-    </svg>
-  </a>
+        <!-- Email -->
+        <a class="icon-btn" href="mailto:somgupta0011@gmail.com" title="Email" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:var(--glass);border:1px solid var(--soft-border);">
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
 
-  <!-- LinkedIn Icon -->
-  <a class="icon-btn" href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank" title="LinkedIn">
-    <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M4.98 3.5c0 1.38-1.12 
-      2.5-2.5 2.5S0 4.88 0 
-      3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 
-      8.5h4v14h-4v-14zm7.5 0h3.8v1.94h.06c.53-1 
-      1.83-2.06 3.77-2.06 4.03 0 4.78 2.62 4.78 
-      6.02v8.1h-4v-7.18c0-1.71-.03-3.92-2.39-3.92-2.39 
-      0-2.76 1.86-2.76 3.79v7.31h-4v-14z"/>
-    </svg>
-  </a>
+        <!-- GitHub -->
+        <a class="icon-btn" href="https://github.com/somguptaa" target="_blank" title="GitHub" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:var(--glass);border:1px solid var(--soft-border);">
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
 
-</div>
+        <!-- LinkedIn -->
+        <a class="icon-btn" href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank" title="LinkedIn" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:var(--glass);border:1px solid var(--soft-border);">
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.5 2.5S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8.5h4v14h-4v-14zm7.5 0h3.8v1.94h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.62 4.78 6.02v8.1h-4v-7.18c0-1.71-.03-3.92-2.39-3.92-2.39 0-2.76 1.86-2.76 3.79v7.31h-4v-14z"/></svg>
+        </a>
 
+      </div>
+    </div>
 
-    <!-- Form Card -->
-    <div style="background:var(--card);padding:22px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,0.06)">
+    <!-- Form -->
+    <div style="background:var(--card);padding:22px;border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,0.06)">
       <form id="contactForm">
         <input name="from_name" class="input" placeholder="Your Name" required>
-        <input name="reply_to" type="email" class="input" placeholder="Your Email" required>
+        <input name="reply_to" class="input" type="email" placeholder="Your Email" required>
         <input name="subject" class="input" placeholder="Subject" required>
         <textarea name="message" class="input" placeholder="Your Message" required></textarea>
 
-        <button type="submit" class="resume-btn" style="margin-top:10px;width:100%;padding:12px">
+        <button class="resume-btn" type="submit" style="margin-top:10px;width:100%;padding:12px;">
           Send Message
         </button>
-        <p id="formStatus" class="muted" style="margin-top:10px"></p>
+        <p id="formStatus" class="muted" style="margin-top:8px"></p>
       </form>
     </div>
 
   </div>
 </section>
 
-<footer>
+<footer style="text-align:center;padding:20px;color:var(--muted)">
   © <span id="year"></span> Som Gupta • Built with ❤️ • Hosted on GitHub Pages
 </footer>
 
-<!-- -------------- JAVASCRIPT -------------- -->
+<!-- SCROLL TO TOP BUTTON (Bottom-right circle) -->
+<button id="scrollTopBtn" aria-label="Scroll to top"
+style="position:fixed;bottom:28px;right:26px;width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;background:var(--accent);color:#fff;font-size:22px;display:none;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.2);z-index:999;">
+↑
+</button>
+
+<!-- JAVASCRIPT -->
 <script>
-/* Footer Year */
-document.getElementById("year").textContent = new Date().getFullYear();
-
-/* Typing Effect */
-const typingEl = document.getElementById("typing");
-const words = ["Java Developer","Spring Boot Developer","Full Stack Developer","API Developer"];
-let wi=0, ci=0, del=false;
-
-function type(){
-  const w = words[wi];
-  typingEl.innerHTML = w.substring(0, ci) + '<span style="opacity:.4">|</span>';
-
-  if(!del && ci === w.length){ del = true; setTimeout(type, 700); return; }
-  if(del && ci === 0){ del = false; wi = (wi+1) % words.length; }
-
-  ci += del ? -1 : 1;
-  setTimeout(type, del ? 50 : 110);
-}
-type();
-
-/* Theme Toggle */
-const themeBtn = document.getElementById("themeToggle");
-themeBtn.onclick = () => {
-  const dark = document.documentElement.hasAttribute("data-theme");
-  if(dark){
-    document.documentElement.removeAttribute("data-theme");
-    themeBtn.textContent = "Dark Mode";
-  } else {
-    document.documentElement.setAttribute("data-theme","dark");
-    themeBtn.textContent = "Light Mode";
-  }
-};
-
-/* Sidebar Toggle */
+/* --- Basic helpers --- */
+const themeToggle = document.getElementById("themeToggle");
+const hamburger = document.getElementById("hamburger");
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
-document.getElementById("hamburger").onclick = () => {
+const closeSidebar = document.getElementById("closeSidebar");
+const scrollBtn = document.getElementById("scrollTopBtn");
+
+/* Year */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* Typing effect (tweaked to avoid late chars) */
+const typingEl = document.getElementById("typing");
+const words = ["Java Developer","Spring Boot Developer","Full Stack Developer","API Developer"];
+let wi=0, ci=0, deleting=false;
+function tick(){
+  const w = words[wi];
+  if(!deleting){
+    ci++;
+    typingEl.textContent = w.slice(0,ci) + " "; // non-breaking space avoids missing char flicker
+    if(ci >= w.length){ deleting = true; setTimeout(tick, 900); return; }
+  } else {
+    ci--;
+    typingEl.textContent = w.slice(0,ci) + " ";
+    if(ci <= 0){ deleting = false; wi = (wi+1)%words.length; setTimeout(tick, 220); return; }
+  }
+  setTimeout(tick, deleting ? 45 : 90);
+}
+tick();
+
+/* Theme toggle */
+(function(){
+  // restore saved theme
+  const saved = localStorage.getItem("themePref");
+  if(saved === "dark") { document.documentElement.setAttribute("data-theme","dark"); themeToggle.textContent = "Light Mode"; themeToggle.setAttribute("aria-pressed","true"); }
+  else { document.documentElement.removeAttribute("data-theme"); themeToggle.textContent = "Dark Mode"; themeToggle.setAttribute("aria-pressed","false"); }
+
+  themeToggle.addEventListener("click", ()=>{
+    const dark = document.documentElement.hasAttribute("data-theme");
+    if(dark){
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("themePref","light");
+      themeToggle.textContent = "Dark Mode";
+      themeToggle.setAttribute("aria-pressed","false");
+    } else {
+      document.documentElement.setAttribute("data-theme","dark");
+      localStorage.setItem("themePref","dark");
+      themeToggle.textContent = "Light Mode";
+      themeToggle.setAttribute("aria-pressed","true");
+    }
+  });
+})();
+
+/* Sidebar toggle */
+hamburger.addEventListener("click", ()=>{
   sidebar.classList.add("show");
   overlay.classList.add("show");
-};
-document.getElementById("closeSidebar").onclick = () => {
-  sidebar.classList.remove("show");
-  overlay.classList.remove("show");
-};
-overlay.onclick = () => {
-  sidebar.classList.remove("show");
-  overlay.classList.remove("show");
-};
+  sidebar.setAttribute("aria-hidden","false");
+  overlay.setAttribute("aria-hidden","false");
+});
+closeSidebar.addEventListener("click", ()=>{ sidebar.classList.remove("show"); overlay.classList.remove("show"); sidebar.setAttribute("aria-hidden","true"); overlay.setAttribute("aria-hidden","true"); });
+overlay.addEventListener("click", ()=>{ sidebar.classList.remove("show"); overlay.classList.remove("show"); sidebar.setAttribute("aria-hidden","true"); overlay.setAttribute("aria-hidden","true"); });
 
-/* Reveal on Scroll */
-const revealElements = document.querySelectorAll('.reveal');
+/* Reveal on scroll */
+const revealEls = document.querySelectorAll(".reveal");
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('inview');
+    if(e.isIntersecting) e.target.classList.add("inview");
   });
-},{threshold:.15});
-revealElements.forEach(el=>observer.observe(el));
+},{threshold:0.12});
+revealEls.forEach(el=>observer.observe(el));
 
-/* GitHub Star Count + Languages */
-(async()=>{
-  const user="somguptaa";
-  const ts=document.getElementById("totalStars");
-  const langs=document.getElementById("langs");
-  let stars=0, page=1, map={};
+/* GitHub stars & languages (public API) */
+(async function(){
+  const user = "somguptaa";
+  const ts = document.getElementById("totalStars");
+  const langs = document.getElementById("langs");
+  let page = 1, stars = 0, langMap = {};
 
-  try{
+  try {
     while(true){
-      const r=await fetch(`https://api.github.com/users/${user}/repos?per_page=100&page=${page}`);
-      const d=await r.json();
-      if(d.length===0) break;
-
-      d.forEach(repo=>{
-        stars += repo.stargazers_count;
-        if(repo.language){ map[repo.language] = (map[repo.language]||0)+1; }
+      const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=100&page=${page}`);
+      if(!res.ok) throw new Error("rate/failed");
+      const data = await res.json();
+      if(!data || data.length === 0) break;
+      data.forEach(r => {
+        stars += Number(r.stargazers_count || 0);
+        if(r.language) langMap[r.language] = (langMap[r.language]||0)+1;
       });
-
       page++;
     }
-
-    ts.textContent = "⭐ Total Stars: " + stars;
-
-    const sorted = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,6);
-    langs.innerHTML = sorted
-      .map(([k,v])=>`<span style="padding:6px 10px;margin:4px;background:rgba(0,0,0,0.06);border-radius:20px">${k} (${v})</span>`)
-      .join("");
-
-  }catch(e){
-    ts.textContent="Failed to load stars"; 
-    ts.style.color="#c33";
-    langs.style.display="none";
-    document.getElementById("langsError").style.display="block";
+    if(ts) ts.textContent = "⭐ Total Stars: " + stars;
+    const arr = Object.entries(langMap).sort((a,b)=>b[1]-a[1]).slice(0,6);
+    if(langs) langs.innerHTML = arr.map(([k,v])=>`<span style="display:inline-block;padding:6px 10px;margin:4px;background:rgba(0,0,0,0.06);border-radius:20px;font-weight:600;">${k} (${v})</span>`).join("");
+  } catch(err){
+    if(ts) ts.textContent = "⭐ Total Stars: Failed to load";
+    if(langs) { langs.style.display="none"; const le = document.getElementById("langsError"); if(le) le.style.display="block"; }
   }
 })();
 
-/* Contact Form — mailto fallback */
-document.getElementById("contactForm").onsubmit = (e)=>{
+/* Contact form -> mailto fallback */
+document.getElementById("contactForm").addEventListener("submit", function(e){
   e.preventDefault();
-  const s=document.getElementById("formStatus");
-  s.textContent="Opening email app…";
+  const status = document.getElementById("formStatus");
+  status.textContent = "Opening email app…";
+  const fd = new FormData(this);
+  const subject = encodeURIComponent(fd.get("subject") || "Contact");
+  const body = encodeURIComponent("Name: "+(fd.get("from_name")||"")+"\nEmail: "+(fd.get("reply_to")||"")+"\n\n"+(fd.get("message")||""));
+  window.location.href = `mailto:somgupta0011@gmail.com?subject=${subject}&body=${body}`;
+});
 
-  const f=new FormData(e.target);
-  window.location.href =
-    `mailto:somgupta0011@gmail.com?subject=${
-      encodeURIComponent(f.get("subject"))
-    }&body=${
-      encodeURIComponent("Name: "+f.get("from_name")+"\nEmail: "+f.get("reply_to")+"\n\nMessage:\n"+f.get("message"))
-    }`;
-};
+/* Scroll to top button */
+window.addEventListener("scroll", ()=>{
+  if(window.scrollY > 500) scrollBtn.style.display = "flex";
+  else scrollBtn.style.display = "none";
+});
+scrollBtn.addEventListener("click", ()=> window.scrollTo({top:0,behavior:"smooth"}));
+
+/* Accessibility: close sidebar on ESC */
+window.addEventListener("keydown", (e)=>{
+  if(e.key === "Escape"){
+    sidebar.classList.remove("show");
+    overlay.classList.remove("show");
+    sidebar.setAttribute("aria-hidden","true");
+    overlay.setAttribute("aria-hidden","true");
+  }
+});
 </script>
 
 </body>
