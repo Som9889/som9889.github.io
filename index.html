@@ -192,17 +192,27 @@ textarea{min-height:120px;resize:vertical}
 <!-- HERO -->
 <section id="hero" class="hero">
   <div class="hero-card reveal" role="region" aria-label="Introduction">
-    <div class="hex-wrap">
-      <a href="https://github.com/somguptaa" target="_blank" rel="noopener" aria-label="Som Gupta on GitHub" class="profile-hex">
-        <img src="https://github.com/somguptaa.png" alt="Som Gupta">
-      </a>
+
+    <!-- ROUND PROFILE IMAGE -->
+    <div style="display:flex;justify-content:center;margin-bottom:18px;">
+      <img src="profile.jpg" alt="Som Gupta"
+        style="
+          width:150px;
+          height:150px;
+          border-radius:50%;
+          object-fit:cover;
+          box-shadow:0 8px 25px rgba(0,0,0,0.18);
+          border:4px solid rgba(255,255,255,0.35);
+        ">
     </div>
 
     <h1>Hello, I'm <span style="color:var(--accent)">Som Gupta</span></h1>
     <p id="typing" class="typing" aria-live="polite"></p>
-    <p class="lead">Java • Spring Boot • Full Stack (Java + JavaScript) • SQL • MongoDB • REST APIs</p>
+    <p class="lead">Java Full Stack Developer • Spring Boot • SQL • MongoDB • REST APIs</p>
+  
   </div>
 </section>
+
 
 <!-- ABOUT -->
 <section id="about" class="panel reveal" aria-labelledby="about-heading">
