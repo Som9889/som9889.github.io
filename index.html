@@ -43,14 +43,14 @@
     height:60vh;
     border-radius:50%;
     filter:blur(60px);
-    opacity:.30; /* softened */
+    opacity:.25; /* softened */
     transform:translateY(-10%);
     animation:waveMove 14s linear infinite;
     mix-blend-mode:overlay;
   }
   .wave-1{background:linear-gradient(90deg,#60a5fa,#7dd3fc);}
-  .wave-2{background:linear-gradient(90deg,#a78bfa,#7c3aed);top:20%;opacity:.22;}
-  .wave-3{background:linear-gradient(90deg,#34d399,#60a5fa);top:40%;opacity:.18;}
+  .wave-2{background:linear-gradient(90deg,#a78bfa,#7c3aed);top:20%;opacity:.18;}
+  .wave-3{background:linear-gradient(90deg,#34d399,#60a5fa);top:40%;opacity:.15;}
 
   @keyframes waveMove{
     0%{transform:translateX(-15%) translateY(-8%) scale(1)}
@@ -58,18 +58,16 @@
     100%{transform:translateX(-15%) translateY(-8%) scale(1)}
   }
 
-  /* Fix section header scroll issue */
   section { scroll-margin-top: 90px; }
 
-  /* Section background wash for readability */
+  /* Section readable background */
   #about, #skills, #projects, #experience, #education, #contact {
-    position:relative;
-    z-index:3;
     background:rgba(255,255,255,0.55);
     backdrop-filter:blur(5px);
     border-radius:12px;
-    padding-top:50px;
-    padding-bottom:50px;
+    padding:50px 20px;
+    margin:40px auto;
+    max-width:1100px;
   }
   [data-theme="dark"] #about,
   [data-theme="dark"] #skills,
@@ -91,7 +89,6 @@
   [data-theme="dark"] nav{
     background:linear-gradient(180deg, rgba(6,10,18,0.45), rgba(6,10,18,0.18));
   }
-
   .nav-links{display:flex;gap:16px}
   .nav-links a{font-weight:600;text-decoration:none;color:var(--text)}
 
@@ -105,12 +102,17 @@
     text-decoration:none;font-weight:700;color:var(--accent);
     border:2px solid rgba(0,119,255,0.35);
     backdrop-filter:blur(8px);background:var(--glass);
-    box-shadow:0 8px 26px rgba(2,6,23,0.08);
   }
 
   /* HERO */
-  .hero{min-height:62vh;display:flex;align-items:center;justify-content:center;padding:44px 18px;text-align:center}
-  .hero-card{max-width:980px;background:var(--card);padding:36px;border-radius:12px;box-shadow:0 10px 40px rgba(2,6,23,0.08)}
+  .hero{
+    min-height:62vh;display:flex;align-items:center;justify-content:center;
+    padding:44px 18px;text-align:center;
+  }
+  .hero-card{
+    max-width:900px;background:var(--card);padding:36px;border-radius:12px;
+    box-shadow:0 10px 40px rgba(2,6,23,0.08);
+  }
   .lead{color:var(--muted);max-width:700px;margin:0 auto;}
 
   .icon-btn{
@@ -151,15 +153,24 @@
   .edu-grid{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;max-width:900px;margin:auto;
   }
-  .edu-card{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 8px 26px rgba(2,6,23,0.06)}
+  .edu-card{
+    background:var(--card);padding:14px;border-radius:10px;
+    box-shadow:0 8px 26px rgba(2,6,23,0.06)
+  }
 
   footer{text-align:center;padding:18px;color:var(--muted);margin-top:20px}
+
+  /* Input Styles for Contact */
+  .input{
+    width:100%;padding:12px;margin:10px 0;
+    border-radius:8px;border:1px solid #ccc;background:transparent;color:var(--text);
+  }
 </style>
 </head>
 
 <body>
 
-<!-- gradient background -->
+<!-- background waves -->
 <div class="bg-wrap">
   <div class="gradient-wave wave-1"></div>
   <div class="gradient-wave wave-2"></div>
@@ -188,34 +199,22 @@
 <section class="hero">
   <div class="hero-card">
     <h1>Hello, I'm <span style="color:var(--accent)">Som Gupta</span></h1>
-    <p id="typing" class="typing" style="font-weight:700;color:var(--accent)"></p>
-    <p class="lead">Java • Spring Boot • Full Stack (Java + JavaScript) • SQL • MongoDB • APIs</p>
-
-    <div style="margin-top:18px;display:flex;gap:12px;justify-content:center">
-      <a class="icon-btn" href="https://github.com/somguptaa" target="_blank">
-        <svg width="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0..." /></svg>
-      </a>
-      <a class="icon-btn" href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank">
-        <svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5..." /></svg>
-      </a>
-      <a class="icon-btn" href="mailto:somgupta0011@gmail.com">
-        <svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13.065..." /></svg>
-      </a>
-    </div>
+    <p id="typing" style="color:var(--accent);font-weight:700;"></p>
+    <p class="lead">Java • Spring Boot • Full Stack (Java + JavaScript) • SQL • MongoDB • REST APIs</p>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
   <h2 style="text-align:center">About Me</h2>
-  <p class="lead" style="text-align:center;max-width:800px;margin:auto">
+  <p class="lead" style="text-align:center">
     I develop web applications and REST APIs using Java, Spring Boot, SQL, and JavaScript. I follow clean architecture & SOLID principles.
   </p>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-  <h2 class="section-title" style="text-align:center">Skills</h2>
+  <h2 style="text-align:center">Skills</h2>
   <div class="skills-grid">
     <div class="skill">Java</div>
     <div class="skill">Spring Boot</div>
@@ -234,29 +233,22 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <h2 class="section-title" style="text-align:center">Projects</h2>
+  <h2 style="text-align:center">Projects</h2>
 
   <div class="project-grid">
-
     <div class="card">
       <h3>Online BookStore</h3>
-      <p>REST API app with JWT auth, catalog, cart, orders & reviews. Spring Boot, MySQL, MongoDB, Swagger.</p>
-      <div class="buttons">
-        <a href="https://github.com/somguptaa/Online-BookStore" target="_blank">Repository</a>
-      </div>
+      <p>REST API app with JWT authentication, catalog, cart, orders & reviews. Spring Boot, MySQL, MongoDB, Swagger.</p>
+      <a href="https://github.com/somguptaa/Online-BookStore" target="_blank" class="resume-btn" style="padding:8px 14px;margin-top:10px;display:inline-block;">Repository</a>
     </div>
 
     <div class="card">
       <h3>School Management System</h3>
-      <p>Backend APIs with JWT security, CRUD modules & Swagger documentation.</p>
-      <div class="buttons">
-        <a href="#" target="_blank">Repository</a>
-      </div>
+      <p>Backend system with JWT role-based security, CRUD modules & Swagger documentation.</p>
+      <a href="#" target="_blank" class="resume-btn" style="padding:8px 14px;margin-top:10px;display:inline-block;">Repository</a>
     </div>
-
   </div>
 
-  <!-- GitHub stats -->
   <div style="text-align:center;margin-top:40px">
     <img src="https://img.shields.io/github/followers/somguptaa?label=Followers&style=social">
     <img src="https://img.shields.io/github/stars/somguptaa/Online-BookStore?label=Stars&style=social">
@@ -274,7 +266,7 @@
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <h2 style="text-align:center">Recent Experience</h2>
+  <h2 style="text-align:center">Experience</h2>
 
   <div class="timeline-item">
     <h3>Online BookStore — Lead Developer</h3>
@@ -315,19 +307,41 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT (UPDATED PREMIUM DESIGN) -->
 <section id="contact">
-  <h2 style="text-align:center">Contact</h2>
+  <h2 style="text-align:center;margin-bottom:25px">Contact</h2>
 
-  <div style="max-width:700px;margin:auto">
-    <form id="contactForm">
-      <input name="from_name" class="input" placeholder="Your Name" required>
-      <input name="reply_to" type="email" class="input" placeholder="Your Email" required>
-      <input name="subject" class="input" placeholder="Subject" required>
-      <textarea name="message" class="input" placeholder="Your Message" required></textarea>
-      <button class="resume-btn" type="submit" style="margin-top:12px">Send Message</button>
-      <p id="formStatus" class="muted"></p>
-    </form>
+  <div style="max-width:900px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+
+    <!-- Info Card -->
+    <div style="background:var(--card);padding:22px;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,0.06)">
+      <h3>Get in Touch</h3>
+      <p class="muted">Feel free to reach out for collaboration, projects or opportunities.</p>
+
+      <p><strong>Email:</strong> somgupta0011@gmail.com</p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank">Som Gupta</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/somguptaa" target="_blank">somguptaa</a></p>
+
+      <div style="margin-top:12px;display:flex;gap:10px;">
+        <a class="icon-btn" href="mailto:somgupta0011@gmail.com">📩</a>
+        <a class="icon-btn" href="https://github.com/somguptaa">🐙</a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/som-gupta-2k3/">🔗</a>
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div style="background:var(--card);padding:22px;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,0.06)">
+      <form id="contactForm">
+        <input name="from_name" class="input" placeholder="Your Name" required>
+        <input name="reply_to" type="email" class="input" placeholder="Your Email" required>
+        <input name="subject" class="input" placeholder="Subject" required>
+        <textarea name="message" class="input" placeholder="Your Message" required></textarea>
+
+        <button class="resume-btn" type="submit" style="margin-top:10px;width:100%;padding:12px;">Send Message</button>
+        <p id="formStatus" class="muted" style="margin-top:8px"></p>
+      </form>
+    </div>
+
   </div>
 </section>
 
@@ -335,15 +349,13 @@
   © <span id="year"></span> Som Gupta • Built with ❤️ • Hosted on GitHub Pages
 </footer>
 
-
-<!-- SCRIPTS -->
+<!-- JS -->
 <script>
-/* Year */
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* Premium Typing Effect */
+/* Typing Effect */
 const typingEl = document.getElementById("typing");
-const words = ["Java Developer","Spring Boot Engineer","Full Stack Developer","API Developer"];
+const words = ["Java Developer","Spring Boot Developer","Full Stack Developer","API Developer"];
 let wi=0, ci=0, del=false;
 function type(){
   const word = words[wi];
@@ -368,7 +380,7 @@ document.getElementById("themeToggle").onclick = ()=>{
   document.getElementById("themeToggle").textContent = isDark ? "Dark Mode" : "Light Mode";
 };
 
-/* GitHub Stats */
+/* GitHub Stars + Languages */
 (async()=>{
   const user="somguptaa";
   const ts=document.getElementById("totalStars");
@@ -380,27 +392,30 @@ document.getElementById("themeToggle").onclick = ()=>{
       const d=await r.json(); if(d.length===0) break;
       d.forEach(repo=>{
         stars += repo.stargazers_count;
-        map[repo.language] = (map[repo.language]||0)+1;
+        if (repo.language) {  // ignore null
+          map[repo.language] = (map[repo.language]||0)+1;
+        }
       });
       page++;
     }
     ts.textContent = "⭐ Total Stars: " + stars;
-    langs.innerHTML = Object.entries(map).filter(([k])=>k)
-      .sort((a,b)=>b[1]-a[1])
-      .slice(0,6)
+
+    const sorted = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,6);
+    langs.innerHTML = sorted
       .map(([k,v])=>`<span style="padding:6px 10px;margin:4px;background:rgba(0,0,0,0.06);border-radius:20px">${k} (${v})</span>`)
       .join("");
+
   } catch(e){
     ts.textContent="Failed to load stars"; ts.style.color="#c33";
     langs.style.display="none"; document.getElementById("langsError").style.display="block";
   }
 })();
 
-/* Contact Form (EmailJS Fallback) */
+/* Contact Form (fallback mailto) */
 document.getElementById("contactForm").onsubmit=(e)=>{
   e.preventDefault();
   const s=document.getElementById("formStatus");
-  s.textContent="Opening email…";
+  s.textContent="Opening email app…";
   const form=new FormData(e.target);
   window.location.href=`mailto:somgupta0011@gmail.com?subject=${encodeURIComponent(form.get("subject"))}&body=${encodeURIComponent("Name: "+form.get("from_name")+"\nEmail: "+form.get("reply_to")+"\n\nMessage:\n"+form.get("message"))}`;
 };
