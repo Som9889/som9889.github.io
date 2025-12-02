@@ -1,427 +1,504 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Som Gupta — Developer Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --bg: #f7f7f7;
-    --card: #ffffff;
-    --text: #111827;
-    --muted: #555;
-    --accent: #0077ff;
+  :root{
+    --bg:#f7f7f7;
+    --card:#ffffff;
+    --text:#111827;
+    --muted:#556;
+    --accent:#0077ff;
+    --glass: rgba(255,255,255,0.26);
+  }
+  [data-theme="dark"]{
+    --bg:#070912;
+    --card:#0f1724;
+    --text:#e6eef8;
+    --muted:#9fb0d1;
+    --accent:#60a5fa;
+    --glass: rgba(16,24,40,0.28);
   }
 
-  [data-theme="dark"] {
-    --bg: #0b1220;
-    --card: #0f1724;
-    --text: #e6eef8;
-    --muted: #b6c2d8;
-    --accent: #60a5fa;
-  }
+  html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
 
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    transition: background .25s, color .25s;
+  /* ===== animated gradient waves background ===== */
+  .bg-wrap{
+    position:fixed;inset:0;z-index:-2;overflow:hidden;
+    background:linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
   }
+  .gradient-wave{
+    position:absolute;left:-10%;right:-10%;height:60vh;border-radius:50%;
+    filter:blur(60px);opacity:.55;transform:translateY(-10%);
+    animation:waveMove 14s linear infinite;
+    mix-blend-mode:overlay;
+  }
+  .wave-1{background:linear-gradient(90deg,#60a5fa,#7dd3fc);}
+  .wave-2{background:linear-gradient(90deg,#a78bfa,#7c3aed);top:20%;opacity:.45;animation-duration:18s}
+  .wave-3{background:linear-gradient(90deg,#34d399,#60a5fa);top:40%;opacity:.35;animation-duration:22s}
+  @keyframes waveMove{0%{transform:translateX(-15%) translateY(-8%) scale(1)}50%{transform:translateX(15%) translateY(-12%) scale(1.04)}100%{transform:translateX(-15%) translateY(-8%) scale(1)}}
 
-  nav {
-    position: sticky;
-    top: 0;
-    background: rgba(255,255,255,0.4);
-    backdrop-filter: blur(12px);
-    padding: 14px 26px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  /* NAV */
+  nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.18));border-bottom:1px solid rgba(0,0,0,0.04)}
+  [data-theme="dark"] nav{background:linear-gradient(180deg, rgba(6,10,18,0.45), rgba(6,10,18,0.18));border-bottom:1px solid rgba(255,255,255,0.03)}
+  .brand{font-weight:700;font-size:18px}
+  .nav-links{display:flex;gap:16px;align-items:center}
+  .nav-links a{text-decoration:none;color:var(--text);font-weight:600}
+  .nav-actions{display:flex;gap:10px;align-items:center}
 
-  [data-theme="dark"] nav {
-    background: rgba(15,23,36,0.4);
-  }
+  /* Buttons */
+  .toggle-btn{padding:8px 12px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;font-weight:700}
+  .resume-btn{display:inline-block;padding:10px 18px;border-radius:12px;text-decoration:none;font-weight:700;color:var(--accent);border:2px solid rgba(0,119,255,0.35);backdrop-filter:blur(8px);background:var(--glass);box-shadow:0 8px 26px rgba(2,6,23,0.08);transition:transform .22s,background .22s}
+  .resume-btn:hover{transform:translateY(-4px);background:var(--accent);color:#fff}
 
-  .nav-links a {
-    margin-left: 16px;
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 600;
-  }
+  /* HERO */
+  .hero{min-height:62vh;display:flex;align-items:center;justify-content:center;padding:44px 18px;text-align:center}
+  .hero-card{width:100%;max-width:980px;background:var(--card);padding:36px;border-radius:12px;box-shadow:0 10px 40px rgba(2,6,23,0.08)}
+  .hero h1{font-size:34px;margin:0 0 8px}
+  .typing{color:var(--accent);font-weight:700}
+  .lead{color:var(--muted);max-width:900px;margin:8px auto 0;line-height:1.6}
+  .hero-meta{display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+  .socials{display:flex;gap:10px;align-items:center}
 
-  .toggle-btn {
-    padding: 8px 14px;
-    border-radius: 8px;
-    border: 1px solid var(--accent);
-    background: transparent;
-    color: var(--accent);
-    cursor: pointer;
-    font-weight: 600;
-  }
+  /* ICONS simple svg buttons */
+  .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text);text-decoration:none}
+  [data-theme="dark"] .icon-btn{border:1px solid rgba(255,255,255,0.03)}
+  .icon-btn:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,0.06)}
 
-  .hero {
-    text-align: center;
-    padding: 60px 20px;
-  }
+  /* SECTIONS */
+  section{padding:64px 20px}
+  .container{max-width:1100px;margin:0 auto}
+  h2.section-title{font-size:28px;text-align:center;margin-bottom:18px}
+  .muted{color:var(--muted)}
 
-  .hero-card {
-    max-width: 900px;
-    margin: auto;
-    padding: 32px;
-    background: var(--card);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  }
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:18px}
+  .skill{background:var(--card);padding:14px;border-radius:10px;text-align:center;font-weight:700;box-shadow:0 8px 26px rgba(2,6,23,0.06)}
 
-  h2.section-title {
-    text-align: center;
-    font-size: 28px;
-    margin-top: 40px;
-  }
+  /* PROJECTS */
+  .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .card{background:var(--card);border-radius:12px;padding:18px;overflow:hidden;position:relative;box-shadow:0 8px 28px rgba(2,6,23,0.06);transition:transform .28s ease,box-shadow .28s,border-color .28s}
+  .card:hover{transform:translateY(-8px);box-shadow:0 18px 46px rgba(2,6,23,0.12);border:1px solid rgba(0,119,255,0.07)}
+  .card h3{margin:8px 0;color:var(--accent)}
+  .card p{color:var(--muted);line-height:1.5}
+  .card .buttons{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
 
-  .lead {
-    max-width: 800px;
-    margin: auto;
-    color: var(--muted);
-    line-height: 1.6;
-  }
+  /* EXPERIENCE timeline */
+  .timeline{max-width:900px;margin:18px auto;padding:12px}
+  .timeline-item{position:relative;padding:14px 16px 14px 46px;border-left:3px solid rgba(0,0,0,0.04);margin-bottom:18px}
+  [data-theme="dark"] .timeline-item{border-left-color:rgba(255,255,255,0.04)}
+  .timeline-item h4{margin:0 0 6px}
+  .timeline-item .meta{font-size:13px;color:var(--muted)}
 
-  .skills-grid {
-    max-width: 1000px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
-    padding: 20px;
-  }
+  /* EDUCATION */
+  .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px}
+  .edu-card{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 8px 20px rgba(2,6,23,0.06)}
 
-  .skill {
-    background: var(--card);
-    padding: 16px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    font-weight: 600;
-  }
+  /* CONTACT / FORM */
+  .contact-grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:900px;margin:18px auto}
+  @media(min-width:760px){ .contact-grid{grid-template-columns:1fr 360px} }
+  .input,textarea{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text)}
+  textarea{min-height:140px}
+  .form-note{color:var(--muted);font-size:13px;margin-top:8px}
 
-  .project-grid {
-    max-width: 1000px;
-    margin: auto;
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  }
+  /* FOOTER */
+  footer{padding:22px;text-align:center;color:var(--muted);background:transparent;border-top:1px solid rgba(0,0,0,0.03);margin-top:30px}
 
-  .card {
-    background: var(--card);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 26px rgba(0,0,0,0.08);
-  }
-
-  .card h3 {
-    color: var(--accent);
-    margin: 0 0 8px;
-  }
-
-  .buttons a {
-    display: inline-block;
-    padding: 8px 12px;
-    margin-right: 8px;
-    text-decoration: none;
-    border-radius: 8px;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-weight: 600;
-  }
-
-  .contact-form {
-    max-width: 600px;
-    margin: auto;
-  }
-
-  .input, textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    background: transparent;
-    color: var(--text);
-  }
-
-  .btn {
-    padding: 10px 16px;
-    border: none;
-    border-radius: 8px;
-    background: var(--accent);
-    color: #fff;
-    cursor: pointer;
-    font-weight: 700;
-  }
-
-  footer {
-    text-align: center;
-    padding: 20px;
-    color: var(--muted);
-    margin-top: 40px;
-  }
+  /* small helpers */
+  .center{text-align:center}
+  .kbd{padding:6px 8px;border-radius:6px;background:rgba(0,0,0,0.04);font-weight:700}
+  @media(max-width:700px){ .hero-card{padding:22px} nav{padding:10px 14px} }
 </style>
 </head>
-
-
-
-
 <body>
 
-<!-- NAV -->
-<nav>
-  <div style="font-weight:700;">Som Gupta</div>
-
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+  <!-- gradient waves -->
+  <div class="bg-wrap" aria-hidden="true">
+    <div class="gradient-wave wave-1" style="top:-8%;height:46vh;left:-15%;"></div>
+    <div class="gradient-wave wave-2" style="top:18%;height:55vh;left:-20%;"></div>
+    <div class="gradient-wave wave-3" style="top:40%;height:60vh;left:-10%;"></div>
   </div>
 
-  <button id="themeToggle" class="toggle-btn">Dark Mode</button>
-</nav>
+  <!-- NAV -->
+  <nav role="navigation" aria-label="main nav">
+    <div class="brand">Som Gupta</div>
 
+    <div class="nav-links" aria-hidden="false">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
 
+    <div class="nav-actions">
+      <a class="resume-btn" href="Som-Resume.pdf" download aria-label="Download resume">Resume</a>
+      <button id="themeToggle" class="toggle-btn" aria-pressed="false">Dark Mode</button>
+    </div>
+  </nav>
 
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="hero-card" role="region" aria-label="Introduction">
+      <h1>Hello, I’m <span style="color:var(--accent)">Som Gupta</span></h1>
+      <p id="typing" class="typing" aria-live="polite" style="font-weight:700;color:var(--accent);"></p>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-card">
-    <h1>Hello, I’m <span style="color:var(--accent)">Som Gupta</span></h1>
-    <p id="typing" style="color:var(--accent);font-weight:700;"></p>
-    <p class="lead">Java • Spring Boot • Full Stack (Java + JavaScript) • SQL • MongoDB • REST APIs</p>
-  </div>
-</section>
+      <p class="lead">Java • Spring Boot • Full Stack (Java + JavaScript) • SQL • MongoDB • REST APIs</p>
 
+      <div class="hero-meta">
+        <div class="socials" role="navigation" aria-label="social links">
+          <!-- GitHub -->
+          <a class="icon-btn" href="https://github.com/somguptaa" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <!-- GitHub SVG -->
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.1 0 0 .67-.21 2.2.82.64-.18 1.33-.27 2.01-.27.68 0 1.37.09 2.01.27 1.53-1.04 2.2-.82 2.2-.82.44 1.09.16 1.9.08 2.1.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a class="icon-btn" href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v14H0zM8 8h4.8v2.1h.1c.7-1.3 2.4-2.6 4.9-2.6C23 7.5 24 10 24 14.1V22h-5v-7.5c0-1.8 0-4.1-2.5-4.1-2.5 0-2.9 2-2.9 4v7.6H8V8z"/></svg>
+          </a>
+          <!-- Email -->
+          <a class="icon-btn" href="mailto:somgupta0011@gmail.com" aria-label="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 13.065L.4 4.8A2 2 0 0 1 2 3h20a2 2 0 0 1 1.6.8L12 13.065zM12 15.6L2 7.2V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7.2L12 15.6z"/></svg>
+          </a>
+        </div>
 
-
-
-<!-- ABOUT -->
-<section id="about">
-  <h2 class="section-title">About Me</h2>
-  <p class="lead">I build backend systems and REST APIs using Java, Spring Boot, SQL, MongoDB and JavaScript. I follow clean architecture and best engineering practices.</p>
-</section>
-
-
-
-
-<!-- SKILLS -->
-<section id="skills">
-  <h2 class="section-title">Skills</h2>
-
-  <div class="skills-grid">
-    <div class="skill">Java</div>
-    <div class="skill">Spring Boot</div>
-    <div class="skill">JPA / Hibernate</div>
-    <div class="skill">MySQL</div>
-    <div class="skill">Oracle</div>
-    <div class="skill">MongoDB</div>
-    <div class="skill">JavaScript</div>
-    <div class="skill">HTML / CSS</div>
-    <div class="skill">Docker</div>
-    <div class="skill">Git & GitHub</div>
-    <div class="skill">Swagger / Postman</div>
-    <div class="skill">JUnit / Mockito</div>
-  </div>
-</section>
-
-
-
-
-<!-- PROJECTS -->
-<section id="projects">
-  <h2 class="section-title">Projects</h2>
-
-  <div class="project-grid">
-
-    <div class="card">
-      <h3>Online BookStore</h3>
-      <p>REST API app with JWT authentication, catalog, cart, orders & reviews built with Spring Boot, MySQL, MongoDB.</p>
-      <div class="buttons">
-        <a href="https://github.com/somguptaa/Online-BookStore" target="_blank">Repository</a>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center">
+          <a class="resume-btn" href="Som-Resume.pdf" download>⬇ Download Resume</a>
+          <a class="resume-btn" href="https://github.com/somguptaa" target="_blank">View GitHub</a>
+        </div>
       </div>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>School Management System</h3>
-      <p>Backend system with JWT-based security, CRUD modules and MySQL for school operations.</p>
-      <div class="buttons">
-        <a href="#" target="_blank">Repository</a>
+  <!-- ABOUT -->
+  <section id="about" class="container">
+    <h2 class="section-title">About Me</h2>
+    <p class="lead">I build backend systems and REST APIs using Java, Spring Boot, SQL, MongoDB and JavaScript. I follow clean architecture and best engineering practices — focusing on clean, testable code and pragmatic microservices patterns.</p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill">Java</div>
+        <div class="skill">Spring Boot</div>
+        <div class="skill">JPA / Hibernate</div>
+        <div class="skill">MySQL</div>
+        <div class="skill">Oracle</div>
+        <div class="skill">MongoDB</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">HTML / CSS</div>
+        <div class="skill">Docker</div>
+        <div class="skill">Git & GitHub</div>
+        <div class="skill">Swagger / Postman</div>
+        <div class="skill">JUnit / Mockito</div>
       </div>
     </div>
+  </section>
 
-  </div>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
 
+      <div class="project-grid">
+        <div class="card" role="article" aria-labelledby="proj1">
+          <h3 id="proj1">Online BookStore</h3>
+          <p>REST API app with JWT authentication, catalog, cart, orders & reviews. Spring Boot, MySQL, MongoDB, Swagger.</p>
+          <div class="buttons">
+            <a href="https://github.com/somguptaa/Online-BookStore" target="_blank">Repository</a>
+            <a href="#" target="_blank">Demo</a>
+          </div>
+        </div>
 
+        <div class="card" role="article" aria-labelledby="proj2">
+          <h3 id="proj2">School Management System</h3>
+          <p>Backend system with JWT role-based security, CRUD modules, optimized MySQL schema and Swagger docs.</p>
+          <div class="buttons">
+            <a href="#" target="_blank">Repository</a>
+            <a href="#" target="_blank">Demo</a>
+          </div>
+        </div>
 
-
-  <!-- ⭐ STATS SECTION -->
-  <div id="stats" style="text-align:center; margin-top:50px; max-width:720px; margin-left:auto; margin-right:auto;">
-
-    <!-- Stable badges -->
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
-      <img src="https://img.shields.io/github/followers/somguptaa?label=Followers&style=social" alt="">
-      <img src="https://img.shields.io/github/stars/somguptaa/Online-BookStore?label=Stars&style=social" alt="">
-      <img src="https://img.shields.io/github/last-commit/Som9889/som9889.github.io?label=Last%20Updated&color=blue" alt="">
-    </div>
-
-    <!-- ⭐ Total Stars -->
-    <div id="totalStars" 
-      style="margin:14px 0;font-size:18px;font-weight:700;color:var(--accent);">
-      ⭐ Total Stars: Loading...
-    </div>
-
-    <!-- 🔤 Languages -->
-    <div style="background:var(--card);padding:16px;border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,0.06);">
-      <strong>Top languages (across my public repositories):</strong>
-
-      <div id="langs" style="margin-top:10px;color:var(--muted);">Loading languages…</div>
-      <div id="langsError" style="color:#d33;margin-top:8px;display:none;">
-        Could not load languages (rate limit or network issue)
+        <!-- add more project cards as needed -->
       </div>
 
-      <div style="margin-top:12px">
-        <a href="https://github.com/somguptaa" target="_blank" style="color:var(--accent);font-weight:700;text-decoration:none;">
-          Visit GitHub →
-        </a>
+      <!-- STATS -->
+      <div id="stats" style="text-align:center;margin-top:40px;">
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;">
+          <img src="https://img.shields.io/github/followers/somguptaa?label=Followers&style=social" alt="Followers">
+          <img src="https://img.shields.io/github/stars/somguptaa/Online-BookStore?label=Stars&style=social" alt="Repo Stars">
+          <img src="https://img.shields.io/github/last-commit/Som9889/som9889.github.io?label=Last%20Updated&color=blue" alt="Last Updated">
+        </div>
+
+        <div id="totalStars" style="margin:10px 0;font-weight:700;color:var(--accent)">⭐ Total Stars: Loading...</div>
+
+        <div style="background:var(--card);padding:16px;border-radius:10px;display:inline-block;box-shadow:0 10px 26px rgba(0,0,0,0.06);">
+          <strong>Top languages (across my public repositories):</strong>
+          <div id="langs" style="margin-top:10px;color:var(--muted)">Loading languages…</div>
+          <div id="langsError" style="color:#d33;display:none;margin-top:8px;">Could not load languages (rate limit or network issue)</div>
+          <div style="margin-top:10px"><a href="https://github.com/somguptaa" target="_blank" style="color:var(--accent);font-weight:700;text-decoration:none;">Visit GitHub →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Recent Work & Experience</h2>
+
+      <div class="timeline">
+        <div class="timeline-item" role="article" aria-labelledby="exp1">
+          <h4 id="exp1">Online BookStore — Lead Developer</h4>
+          <div class="meta">2025 • Spring Boot, MySQL, MongoDB, JWT</div>
+          <p class="muted">Designed and implemented REST APIs for products, orders, carts & authentication. Implemented hybrid storage (MySQL + MongoDB) and Swagger documentation.</p>
+        </div>
+
+        <div class="timeline-item" role="article" aria-labelledby="exp2">
+          <h4 id="exp2">School Management System — Backend Developer</h4>
+          <div class="meta">2025 • Spring Boot, MySQL, JWT</div>
+          <p class="muted">Built modules for managing students, teachers, enrollment and implemented role-based JWT security and optimized relational schema.</p>
+        </div>
+
+        <div class="timeline-item" role="article" aria-labelledby="exp3">
+          <h4 id="exp3">Full Stack Java Developer Training — Naresh i Technologies</h4>
+          <div class="meta">2024 • Training & Projects</div>
+          <p class="muted">Trained in Core & Advanced Java, Spring Boot, REST APIs, Microservices patterns and best practices.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <strong>B.C.A. — Mahatma Gandhi Chitrakoot Gramoday Vishwavidyalaya</strong>
+          <div class="muted">2025 — CGPA: 8.4/10</div>
+        </div>
 
-</section>
+        <div class="edu-card">
+          <strong>Class XII — U.P. Board</strong>
+          <div class="muted">2021 — Percentage: 57.8%</div>
+        </div>
 
+        <div class="edu-card">
+          <strong>Class X — U.P. Board</strong>
+          <div class="muted">2018 — Percentage: 61.5%</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
 
+      <div class="contact-grid">
+        <div>
+          <p class="muted">Want to collaborate or have a question? Send a message — I’ll reply as soon as possible.</p>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2 class="section-title">Contact</h2>
+          <form id="contactForm" aria-label="Contact form">
+            <input name="from_name" id="from_name" class="input" placeholder="Your name" required>
+            <input name="reply_to" id="reply_to" class="input" type="email" placeholder="Your email" required>
+            <input name="subject" id="subject" class="input" placeholder="Subject" required>
+            <textarea name="message" id="message" class="input" placeholder="Message" required></textarea>
+            <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+              <button type="submit" class="btn">Send Message</button>
+              <button type="reset" class="btn" style="background:transparent;color:var(--accent);border:1px solid var(--accent)">Reset</button>
+            </div>
+            <p id="formStatus" class="form-note"></p>
+            <p class="form-note">Tip: If EmailJS isn't configured, the form will open your default mail client as a fallback.</p>
+          </form>
+        </div>
 
-  <form class="contact-form">
-    <input class="input" placeholder="Your Name">
-    <input class="input" placeholder="Your Email">
-    <textarea class="input" placeholder="Your Message"></textarea>
-    <button class="btn">Send Message</button>
-  </form>
-</section>
+        <div style="padding:18px;background:var(--card);border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.06)">
+          <h3>Contact Info</h3>
+          <p class="muted">Email: <strong>somgupta0011@gmail.com</strong></p>
+          <p class="muted">LinkedIn: <a href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank">Som Gupta</a></p>
+          <p class="muted">GitHub: <a href="https://github.com/somguptaa" target="_blank">somguptaa</a></p>
 
+          <div style="margin-top:10px;display:flex;gap:10px">
+            <a class="resume-btn" href="Som-Resume.pdf" download>⬇ Download Resume</a>
+            <a class="icon-btn" href="mailto:somgupta0011@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 13.065L.4 4.8A2 2 0 0 1 2 3h20a2 2 0 0 1 1.6.8L12 13.065zM12 15.6L2 7.2V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7.2L12 15.6z"/></svg></a>
+          </div>
+        </div>
 
+      </div>
+    </div>
+  </section>
 
+  <!-- FOOTER -->
+  <footer>
+    <div style="display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:8px">
+      <a href="https://github.com/somguptaa" target="_blank" class="icon-btn" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.1 0 0 .67-.21 2.2.82.64-.18 1.33-.27 2.01-.27.68 0 1.37.09 2.01.27 1.53-1.04 2.2-.82 2.2-.82.44 1.09.16 1.9.08 2.1.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
 
-<footer>
-  © <span id="year"></span> Som Gupta • Hosted on GitHub Pages
-</footer>
+      <a href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank" class="icon-btn" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v14H0zM8 8h4.8v2.1h.1c.7-1.3 2.4-2.6 4.9-2.6C23 7.5 24 10 24 14.1V22h-5v-7.5c0-1.8 0-4.1-2.5-4.1-2.5 0-2.9 2-2.9 4v7.6H8V8z"/></svg></a>
 
+      <a href="mailto:somgupta0011@gmail.com" class="icon-btn" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 13.065L.4 4.8A2 2 0 0 1 2 3h20a2 2 0 0 1 1.6.8L12 13.065zM12 15.6L2 7.2V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7.2L12 15.6z"/></svg></a>
+    </div>
 
+    © <span id="year"></span> Som Gupta • Built with ❤️ • Hosted on GitHub Pages
+  </footer>
 
+  <!-- SCRIPTS -->
+  <script>
+    /* ========== Year ========== */
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-<script>
-/* Year */
-document.getElementById("year").textContent = new Date().getFullYear();
+    /* ========== Premium Typing Effect (with cursor) ========== */
+    (function(){
+      const typingEl = document.getElementById("typing");
+      const words = ["Java Developer","Spring Boot Engineer","Full Stack Developer","API Developer"];
+      let wi=0, ci=0, deleting=false;
 
-/* Typing Effect */
-const typingEl = document.getElementById("typing");
-const words = ["Java Developer", "Spring Boot Engineer", "Full Stack Developer", "API Developer"];
-let wi = 0, ci = 0, del = false;
+      function tick(){
+        const word = words[wi];
+        if(!deleting){
+          typingEl.innerHTML = word.substring(0, ci+1) + '<span class="cursor"></span>';
+          ci++;
+          if(ci === word.length){ deleting=true; setTimeout(tick,900); return; }
+        } else {
+          typingEl.innerHTML = word.substring(0, ci-1) + '<span class="cursor"></span>';
+          ci--;
+          if(ci === 0){ deleting=false; wi=(wi+1)%words.length; setTimeout(tick,300); return; }
+        }
+        setTimeout(tick, deleting?50:120);
+      }
+      tick();
+    })();
 
-function type() {
-  let w = words[wi];
-  typingEl.textContent = del ? w.substring(0, ci--) : w.substring(0, ci++);
-  if (!del && ci === w.length) { del = true; setTimeout(type, 900); return; }
-  if (del && ci === 0) { del = false; wi = (wi + 1) % words.length; }
-  setTimeout(type, del ? 50 : 80);
-}
-type();
+    /* ========== Theme toggle (saves preference) ========== */
+    (function(){
+      const toggleBtn = document.getElementById('themeToggle');
+      const stored = localStorage.getItem('theme');
+      if(stored) document.documentElement.setAttribute('data-theme', stored);
+      function updateUI(){
+        const isDark = document.documentElement.hasAttribute('data-theme');
+        toggleBtn.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+      }
+      updateUI();
+      toggleBtn.addEventListener('click', ()=>{
+        const isDark = document.documentElement.hasAttribute('data-theme');
+        if(isDark){ document.documentElement.removeAttribute('data-theme'); localStorage.setItem('theme',''); }
+        else { document.documentElement.setAttribute('data-theme','dark'); localStorage.setItem('theme','dark'); }
+        updateUI();
+      });
+    })();
 
-/* Theme Toggle */
-const toggleBtn = document.getElementById("themeToggle");
+    /* ========== GitHub: Total stars + Top languages (client-side, auto updates) ========== */
+    (async function(){
+      const username = 'somguptaa';
+      const totalStarsEl = document.getElementById('totalStars');
+      const langsEl = document.getElementById('langs');
+      const langsErr = document.getElementById('langsError');
 
-toggleBtn.addEventListener("click", () => {
-  const dark = !document.documentElement.hasAttribute("data-theme");
+      try {
+        let page = 1;
+        let stars = 0;
+        const counts = {};
 
-  if (dark) {
-    document.documentElement.setAttribute("data-theme","dark");
-    toggleBtn.textContent = "Light Mode";
-  } else {
-    document.documentElement.removeAttribute("data-theme");
-    toggleBtn.textContent = "Dark Mode";
-  }
-});
+        while(true){
+          const resp = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&page=${page}`);
+          if(!resp.ok) throw new Error('GitHub API rate limit or network error');
+          const repos = await resp.json();
+          if(repos.length === 0) break;
 
-/* ⭐ Total GitHub Stars */
-(async function () {
-  const username = "somguptaa";
-  const totalStarsEl = document.getElementById("totalStars");
+          repos.forEach(r=>{
+            stars += r.stargazers_count || 0;
+            const lang = r.language || 'Other';
+            counts[lang] = (counts[lang] || 0) + 1;
+          });
 
-  try {
-    let stars = 0;
-    let page = 1;
+          page++;
+        }
 
-    while (true) {
-      const resp = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&page=${page}`);
-      if (!resp.ok) throw new Error("GitHub API error");
+        totalStarsEl.textContent = `⭐ Total Stars: ${stars}`;
 
-      const repos = await resp.json();
-      if (repos.length === 0) break;
+        const sorted = Object.entries(counts).filter(([k])=>k!=='Other').sort((a,b)=>b[1]-a[1]);
+        if(sorted.length === 0){
+          langsEl.textContent = 'No public repos / languages found.';
+        } else {
+          langsEl.innerHTML = sorted.slice(0,8).map(([lang,c])=> `<span style="display:inline-block;padding:6px 10px;margin:6px;border-radius:999px;background:rgba(0,0,0,0.06);font-weight:700">${lang} (${c})</span>`).join('');
+        }
 
-      repos.forEach(r => stars += r.stargazers_count);
-      page++;
-    }
+      } catch(e){
+        totalStarsEl.textContent = '⭐ Total Stars: Failed to load';
+        totalStarsEl.style.color = '#c33';
+        langsEl.style.display = 'none';
+        langsErr.style.display = 'block';
+        console.error('GitHub stats error', e);
+      }
+    })();
 
-    totalStarsEl.textContent = `⭐ Total Stars: ${stars}`;
-  } catch (e) {
-    totalStarsEl.textContent = "⭐ Total Stars: Failed to load";
-    totalStarsEl.style.color = "#c33";
-  }
-})();
+    /* ========== EmailJS contact form (direct send) with mailto fallback ========== */
+    (function(){
+      // ====== Replace these with your EmailJS values to enable direct sending ======
+      const EMAILJS_SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID";
+      const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID";
+      const EMAILJS_USER_ID = "YOUR_EMAILJS_USER_ID"; // public key
+      // ===========================================================================
 
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
 
-/* 🔤 GitHub Languages */
-(async function () {
-  const username = "somguptaa";
-  const langsEl = document.getElementById("langs");
-  const errEl = document.getElementById("langsError");
+      // Load EmailJS SDK if configured
+      (function loadEmailJs(){
+        if(EMAILJS_USER_ID && EMAILJS_USER_ID !== 'YOUR_EMAILJS_USER_ID'){
+          const s=document.createElement('script');
+          s.src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js";
+          s.onload = ()=> { try{ emailjs.init(EMAILJS_USER_ID); }catch(e){console.warn(e);} };
+          document.head.appendChild(s);
+        }
+      })();
 
-  try {
-    const resp = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
-    if (!resp.ok) throw new Error(resp.status);
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        status.textContent = 'Sending...';
+        // If EmailJS not configured -> open mail client fallback
+        if(!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || EMAILJS_USER_ID==='YOUR_EMAILJS_USER_ID'){
+          // fallback: mailto with prefilled body
+          const name = encodeURIComponent(document.getElementById('from_name').value || '');
+          const email = encodeURIComponent(document.getElementById('reply_to').value || '');
+          const subject = encodeURIComponent(document.getElementById('subject').value || 'Message from portfolio');
+          const body = encodeURIComponent((document.getElementById('message').value || '') + `\n\nFrom: ${name}\nEmail: ${email}`);
+          window.location.href = `mailto:somgupta0011@gmail.com?subject=${subject}&body=${body}`;
+          status.textContent = 'Opened your mail client (fallback). Or configure EmailJS to send directly.';
+          return;
+        }
 
-    const repos = await resp.json();
-    const counts = {};
+        // Send via EmailJS if available
+        try {
+          await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
+          status.style.color = 'green';
+          status.textContent = 'Message sent — thank you!';
+          form.reset();
+        } catch(err){
+          console.error('EmailJS error', err);
+          status.style.color = '#c33';
+          status.textContent = 'Error sending message. Opening mail client as fallback...';
+          // fallback mailto
+          const name = encodeURIComponent(document.getElementById('from_name').value || '');
+          const email = encodeURIComponent(document.getElementById('reply_to').value || '');
+          const subject = encodeURIComponent(document.getElementById('subject').value || 'Message from portfolio');
+          const body = encodeURIComponent((document.getElementById('message').value || '') + `\n\nFrom: ${name}\nEmail: ${email}`);
+          window.location.href = `mailto:somgupta0011@gmail.com?subject=${subject}&body=${body}`;
+        }
+      });
+    })();
 
-    for (const r of repos) {
-      const lang = r.language || "Other";
-      counts[lang] = (counts[lang] || 0) + 1;
-    }
-
-    const sorted = Object.entries(counts)
-      .filter(([k]) => k !== "Other")
-      .sort((a, b) => b[1] - a[1]);
-
-    langsEl.innerHTML = sorted.slice(0, 6).map(([lang, count]) =>
-      `<span style="display:inline-block;padding:6px 10px;margin:6px;border-radius:999px;background:rgba(0,0,0,0.07);font-weight:600;">${lang} (${count})</span>`
-    ).join("");
-
-  } catch (e) {
-    langsEl.style.display = "none";
-    errEl.style.display = "block";
-  }
-})();
-</script>
-
+  </script>
 </body>
 </html>
