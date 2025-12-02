@@ -3,8 +3,18 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Som Gupta — Developer Portfolio</title>
+<title>Som Gupta — Java & Full Stack Developer</title>
 
+<!-- SEO & Social -->
+<meta name="description" content="Som Gupta — Java | Spring Boot | Full Stack (Java + JavaScript). Backend & full-stack engineer building REST APIs and web apps. View projects, GitHub stats and contact." />
+<meta name="keywords" content="Som Gupta, Java Developer, Spring Boot, REST API, Full Stack, JavaScript, MySQL, MongoDB, GitHub" />
+<meta property="og:title" content="Som Gupta — Java & Full Stack Developer" />
+<meta property="og:description" content="Java | Spring Boot | Full Stack (Java + JavaScript) — REST APIs & web apps. See projects & contact." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://raw.githubusercontent.com/Som9889/som9889.github.io/main/social-preview.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -15,6 +25,7 @@
     --muted:#556;
     --accent:#0077ff;
     --glass: rgba(255,255,255,0.26);
+    --max-width:1100px;
   }
   [data-theme="dark"]{
     --bg:#070912;
@@ -25,197 +36,180 @@
     --glass: rgba(16,24,40,0.28);
   }
 
-  html,body{
-    height:100%;margin:0;
-    font-family:'Poppins',sans-serif;
-    background:var(--bg);color:var(--text);
-    -webkit-font-smoothing:antialiased;
-    transition:background .25s,color .25s;
-  }
+  /* Base */
+  html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;transition:background .25s,color .25s;scroll-behavior:smooth}
+  a{color:inherit}
+  img{max-width:100%;display:block}
 
-  /* ===== animated gradient waves background ===== */
-  .bg-wrap{
-    position:fixed;inset:0;z-index:-2;overflow:hidden;
-  }
-  .gradient-wave{
-    position:absolute;
-    left:-10%;right:-10%;
-    height:60vh;
-    border-radius:50%;
-    filter:blur(60px);
-    opacity:.25; /* softened */
-    transform:translateY(-10%);
-    animation:waveMove 14s linear infinite;
-    mix-blend-mode:overlay;
-  }
-  .wave-1{background:linear-gradient(90deg,#60a5fa,#7dd3fc);}
-  .wave-2{background:linear-gradient(90deg,#a78bfa,#7c3aed);top:20%;opacity:.18;}
-  .wave-3{background:linear-gradient(90deg,#34d399,#60a5fa);top:40%;opacity:.15;}
+  /* Skip link for accessibility */
+  .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+  .skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 12px;border-radius:6px;background:#111;color:#fff;z-index:1000;text-decoration:none}
 
-  @keyframes waveMove{
-    0%{transform:translateX(-15%) translateY(-8%) scale(1)}
-    50%{transform:translateX(15%) translateY(-12%) scale(1.04)}
-    100%{transform:translateX(-15%) translateY(-8%) scale(1)}
-  }
+  /* Background waves */
+  .bg-wrap{position:fixed;inset:0;z-index:-2;overflow:hidden}
+  .gradient-wave{position:absolute;left:-10%;right:-10%;height:60vh;border-radius:50%;filter:blur(60px);opacity:.22;transform:translateY(-10%);animation:waveMove 14s linear infinite;mix-blend-mode:overlay}
+  .wave-1{background:linear-gradient(90deg,#60a5fa,#7dd3fc)}
+  .wave-2{background:linear-gradient(90deg,#a78bfa,#7c3aed);top:18%;opacity:.18}
+  .wave-3{background:linear-gradient(90deg,#34d399,#60a5fa);top:38%;opacity:.14}
+  @keyframes waveMove{0%{transform:translateX(-15%) translateY(-8%) scale(1)}50%{transform:translateX(15%) translateY(-12%) scale(1.04)}100%{transform:translateX(-15%) translateY(-8%) scale(1)}}
 
-  section { scroll-margin-top: 90px; }
-
-  /* Section readable background */
-  #about, #skills, #projects, #experience, #education, #contact {
-    background:rgba(255,255,255,0.55);
-    backdrop-filter:blur(5px);
-    border-radius:12px;
-    padding:50px 20px;
-    margin:40px auto;
-    max-width:1100px;
-  }
-  [data-theme="dark"] #about,
-  [data-theme="dark"] #skills,
-  [data-theme="dark"] #projects,
-  [data-theme="dark"] #experience,
-  [data-theme="dark"] #education,
-  [data-theme="dark"] #contact {
-    background:rgba(15,23,36,0.45);
-  }
+  /* Sections holder */
+  section{scroll-margin-top:92px}
+  .panel{background:rgba(255,255,255,0.56);backdrop-filter:blur(6px);border-radius:12px;padding:44px 20px;margin:36px auto;max-width:var(--max-width)}
+  [data-theme="dark"] .panel{background:rgba(15,23,36,0.45)}
 
   /* NAV */
-  nav{
-    position:sticky;top:0;z-index:40;
-    backdrop-filter:blur(8px);
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 28px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.18));
-  }
-  [data-theme="dark"] nav{
-    background:linear-gradient(180deg, rgba(6,10,18,0.45), rgba(6,10,18,0.18));
-  }
-  .nav-links{display:flex;gap:16px}
-  .nav-links a{font-weight:600;text-decoration:none;color:var(--text)}
+  nav{position:sticky;top:0;z-index:70;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:linear-gradient(180deg,rgba(255,255,255,0.45),rgba(255,255,255,0.18))}
+  [data-theme="dark"] nav{background:linear-gradient(180deg,rgba(6,10,18,0.45),rgba(6,10,18,0.18))}
+  .brand{font-weight:700}
+  .nav-links{display:flex;gap:14px;align-items:center}
+  .nav-links a{font-weight:600;text-decoration:none;color:var(--text);padding:8px;border-radius:8px}
+  .nav-links a:focus{outline:3px solid rgba(0,119,255,0.14)}
+  .nav-actions{display:flex;gap:10px;align-items:center}
 
-  .toggle-btn{
-    padding:8px 12px;border-radius:8px;
-    border:1px solid var(--accent);background:transparent;color:var(--accent);
-    cursor:pointer;font-weight:700;
-  }
-  .resume-btn{
-    display:inline-block;padding:10px 18px;border-radius:12px;
-    text-decoration:none;font-weight:700;color:var(--accent);
-    border:2px solid rgba(0,119,255,0.35);
-    backdrop-filter:blur(8px);background:var(--glass);
-  }
+  .resume-btn{display:inline-block;padding:8px 14px;border-radius:10px;text-decoration:none;font-weight:700;color:var(--accent);border:2px solid rgba(0,119,255,0.35);backdrop-filter:blur(6px);background:var(--glass)}
+  .toggle-btn{padding:8px 10px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;font-weight:700}
 
   /* HERO */
-  .hero{
-    min-height:62vh;display:flex;align-items:center;justify-content:center;
-    padding:44px 18px;text-align:center;
-  }
-  .hero-card{
-    max-width:900px;background:var(--card);padding:36px;border-radius:12px;
-    box-shadow:0 10px 40px rgba(2,6,23,0.08);
-  }
-  .lead{color:var(--muted);max-width:700px;margin:0 auto;}
+  .hero{min-height:56vh;display:flex;align-items:center;justify-content:center;padding:40px 18px;text-align:center}
+  .hero-card{max-width:900px;background:var(--card);padding:28px;border-radius:12px;box-shadow:0 12px 40px rgba(2,6,23,0.08)}
+  .hero h1{margin:0 0 6px;font-size:28px}
+  .typing{font-weight:700;color:var(--accent)}
+  .lead{color:var(--muted);max-width:740px;margin:12px auto 0;line-height:1.6}
 
-  .icon-btn{
-    width:40px;height:40px;display:flex;align-items:center;justify-content:center;
-    border:1px solid rgba(0,0,0,0.06);border-radius:8px;
-    text-decoration:none;color:var(--text);
-  }
+  /* icons */
+  .icon-btn{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid rgba(0,0,0,0.06);text-decoration:none;color:var(--text);background:transparent}
 
-  /* SKILLS */
-  .skills-grid{
-    max-width:1000px;margin:auto;
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;
-  }
-  .skill{
-    background:var(--card);padding:14px;border-radius:10px;text-align:center;font-weight:700;
-    box-shadow:0 8px 20px rgba(2,6,23,0.06)
-  }
-
-  /* PROJECTS */
-  .project-grid{
-    max-width:1000px;margin:auto;
-    display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  }
-  .card{
-    background:var(--card);border-radius:12px;padding:18px;
-    box-shadow:0 10px 26px rgba(2,6,23,0.06);
-    transition:transform .25s ease;
-  }
+  /* grids */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+  .skill{background:var(--card);padding:12px;border-radius:10px;text-align:center;font-weight:700;box-shadow:0 8px 20px rgba(2,6,23,0.06)}
+  .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 10px 26px rgba(2,6,23,0.06);transition:transform .22s}
   .card:hover{transform:translateY(-8px)}
 
-  /* EXPERIENCE */
-  .timeline-item{
-    border-left:3px solid rgba(0,0,0,0.06);
-    padding:12px 16px;margin:16px 0 16px 16px;
+  /* timeline / edu */
+  .timeline-item{border-left:3px solid rgba(0,0,0,0.06);padding:12px 16px;margin:14px 0 14px 16px}
+  .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .edu-card{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 8px 26px rgba(2,6,23,0.06)}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:900px;margin:0 auto}
+  .input{width:100%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #ccc;background:transparent;color:var(--text)}
+
+  /* footer */
+  footer{text-align:center;padding:18px;color:var(--muted);margin-top:18px}
+
+  /* responsive */
+  @media (max-width:980px){
+    .nav-links{display:none}
+    .contact-grid{grid-template-columns:1fr}
+    .panel{padding:28px 16px;margin:20px 12px}
+    .hero-card{padding:20px}
   }
 
-  /* EDUCATION */
-  .edu-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;max-width:900px;margin:auto;
-  }
-  .edu-card{
-    background:var(--card);padding:14px;border-radius:10px;
-    box-shadow:0 8px 26px rgba(2,6,23,0.06)
-  }
+  /* Hamburger / Sidebar (right) */
+  .hamburger{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(0,0,0,0.06);border-radius:8px;background:transparent;cursor:pointer}
+  @media(min-width:981px){ .hamburger{display:none} }
 
-  footer{text-align:center;padding:18px;color:var(--muted);margin-top:20px}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);opacity:0;pointer-events:none;transition:opacity .28s;z-index:68}
+  .overlay.show{opacity:1;pointer-events:auto}
 
-  /* Input Styles for Contact */
-  .input{
-    width:100%;padding:12px;margin:10px 0;
-    border-radius:8px;border:1px solid #ccc;background:transparent;color:var(--text);
-  }
+  .sidebar{position:fixed;top:0;right:-360px;width:320px;height:100vh;background:var(--card);box-shadow:-18px 0 40px rgba(2,6,23,0.12);z-index:70;padding:28px;transition:right .32s ease;display:flex;flex-direction:column;gap:18px}
+  .sidebar.show{right:0}
+  .sidebar a{display:block;text-decoration:none;color:var(--text);font-weight:700;padding:10px 6px;border-radius:8px}
+  .sidebar .close-btn{align-self:flex-end;cursor:pointer;padding:6px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent}
+
+  /* Scroll reveal (initial hidden state) */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.inview{opacity:1;transform:translateY(0)}
+
+  /* Section heading underline */
+  h2.section-title{position:relative;display:inline-block}
+  h2.section-title::after{content:"";position:absolute;left:0;bottom:-10px;height:3px;width:0;background:var(--accent);border-radius:4px;transition:width .36s ease}
+  h2.section-title:hover::after{width:56%}
+
+  /* language badges */
+  .lang-badges span{display:inline-block;padding:6px 10px;margin:6px;background:rgba(0,0,0,0.06);border-radius:20px;font-weight:700}
 </style>
 </head>
 
 <body>
+<a href="#hero" class="skip-link">Skip to content</a>
 
-<!-- background waves -->
-<div class="bg-wrap">
+<!-- Background waves -->
+<div class="bg-wrap" aria-hidden="true">
   <div class="gradient-wave wave-1"></div>
   <div class="gradient-wave wave-2"></div>
   <div class="gradient-wave wave-3"></div>
 </div>
 
 <!-- NAV -->
-<nav>
-  <div class="brand">Som Gupta</div>
-
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
+<nav role="navigation" aria-label="Main navigation">
+  <div style="display:flex;gap:12px;align-items:center">
+    <div class="brand">Som Gupta</div>
   </div>
 
-  <div style="display:flex;gap:12px;">
-    <a class="resume-btn" href="Som-Resume.pdf" download>Resume</a>
-    <button id="themeToggle" class="toggle-btn">Dark Mode</button>
+  <div class="nav-links" role="menubar">
+    <a href="#about" role="menuitem">About</a>
+    <a href="#skills" role="menuitem">Skills</a>
+    <a href="#projects" role="menuitem">Projects</a>
+    <a href="#experience" role="menuitem">Experience</a>
+    <a href="#contact" role="menuitem">Contact</a>
+  </div>
+
+  <div class="nav-actions" role="group" aria-label="Actions">
+    <a class="resume-btn" href="Som-Resume.pdf" download aria-label="Download resume">Resume</a>
+    <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
+    <button id="themeToggle" class="toggle-btn" aria-pressed="false">Dark Mode</button>
   </div>
 </nav>
 
+<!-- Overlay + Sidebar -->
+<div id="overlay" class="overlay" tabindex="-1" aria-hidden="true"></div>
+<aside id="sidebar" class="sidebar" aria-hidden="true" role="dialog" aria-label="Mobile menu">
+  <button id="closeSidebar" class="close-btn" aria-label="Close menu">✕</button>
+  <nav style="display:flex;flex-direction:column;gap:6px;margin-top:6px" aria-label="Mobile links">
+    <a href="#about" class="sidebar-link">About</a>
+    <a href="#skills" class="sidebar-link">Skills</a>
+    <a href="#projects" class="sidebar-link">Projects</a>
+    <a href="#experience" class="sidebar-link">Experience</a>
+    <a href="#contact" class="sidebar-link">Contact</a>
+  </nav>
+</aside>
+
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-card">
-    <h1>Hello, I'm <span style="color:var(--accent)">Som Gupta</span></h1>
-    <p id="typing" style="color:var(--accent);font-weight:700;"></p>
+<section id="hero" class="hero" aria-labelledby="hero-heading">
+  <div class="hero-card reveal">
+    <h1 id="hero-heading">Hello, I'm <span style="color:var(--accent)">Som Gupta</span></h1>
+    <p id="typing" class="typing" aria-live="polite" style="margin:6px 0 0"></p>
     <p class="lead">Java • Spring Boot • Full Stack (Java + JavaScript) • SQL • MongoDB • REST APIs</p>
+
+    <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a class="icon-btn" href="https://github.com/somguptaa" target="_blank" aria-label="GitHub">
+        <svg width="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.6c.68.003 1.36.092 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+
+      <a class="icon-btn" href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank" aria-label="LinkedIn">
+        <svg width="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v14H0zM8 8h4.8v2.1h.1c.7-1.3 2.4-2.6 4.9-2.6C23 7.5 24 10 24 14.1V22h-5v-7.5c0-1.8 0-4.1-2.5-4.1-2.5 0-2.9 2-2.9 4v7.6H8V8z"/></svg>
+      </a>
+
+      <a class="icon-btn" href="mailto:somgupta0011@gmail.com" aria-label="Email">
+        <svg width="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
-  <h2 style="text-align:center">About Me</h2>
-  <p class="lead" style="text-align:center">
-    I develop web applications and REST APIs using Java, Spring Boot, SQL, and JavaScript. I follow clean architecture & SOLID principles.
-  </p>
+<section id="about" class="panel reveal" aria-labelledby="about-heading">
+  <h2 id="about-heading" class="section-title">About Me</h2>
+  <p class="lead" style="text-align:center">I develop web applications and REST APIs using Java, Spring Boot, SQL, and JavaScript. I follow clean architecture & SOLID principles — writing maintainable, testable, and production-ready code.</p>
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
-  <h2 style="text-align:center">Skills</h2>
-  <div class="skills-grid">
+<section id="skills" class="panel" aria-labelledby="skills-heading">
+  <h2 id="skills-heading" class="section-title" style="text-align:center">Skills</h2>
+  <div class="skills-grid reveal">
     <div class="skill">Java</div>
     <div class="skill">Spring Boot</div>
     <div class="skill">Hibernate</div>
@@ -232,116 +226,110 @@
 </section>
 
 <!-- PROJECTS -->
-<section id="projects">
-  <h2 style="text-align:center">Projects</h2>
+<section id="projects" class="panel" aria-labelledby="projects-heading">
+  <h2 id="projects-heading" class="section-title" style="text-align:center">Projects</h2>
 
   <div class="project-grid">
-    <div class="card">
-      <h3>Online BookStore</h3>
+    <article class="card reveal" aria-labelledby="proj1">
+      <h3 id="proj1">Online BookStore</h3>
       <p>REST API app with JWT authentication, catalog, cart, orders & reviews. Spring Boot, MySQL, MongoDB, Swagger.</p>
-      <a href="https://github.com/somguptaa/Online-BookStore" target="_blank" class="resume-btn" style="padding:8px 14px;margin-top:10px;display:inline-block;">Repository</a>
-    </div>
+      <a class="resume-btn" href="https://github.com/somguptaa/Online-BookStore" target="_blank" style="margin-top:12px;display:inline-block;padding:8px 12px">Repository</a>
+    </article>
 
-    <div class="card">
-      <h3>School Management System</h3>
+    <article class="card reveal" aria-labelledby="proj2">
+      <h3 id="proj2">School Management System</h3>
       <p>Backend system with JWT role-based security, CRUD modules & Swagger documentation.</p>
-      <a href="#" target="_blank" class="resume-btn" style="padding:8px 14px;margin-top:10px;display:inline-block;">Repository</a>
-    </div>
+      <a class="resume-btn" href="#" target="_blank" style="margin-top:12px;display:inline-block;padding:8px 12px">Repository</a>
+    </article>
   </div>
 
-  <div style="text-align:center;margin-top:40px">
-    <img src="https://img.shields.io/github/followers/somguptaa?label=Followers&style=social">
-    <img src="https://img.shields.io/github/stars/somguptaa/Online-BookStore?label=Stars&style=social">
-    <img src="https://img.shields.io/github/last-commit/Som9889/som9889.github.io?label=Last%20Updated&color=blue">
+  <div style="text-align:center;margin-top:34px">
+    <!-- lazy-loaded shields -->
+    <img loading="lazy" src="https://img.shields.io/github/followers/somguptaa?label=Followers&style=social" alt="followers" style="display:inline-block;margin-right:8px">
+    <img loading="lazy" src="https://img.shields.io/github/stars/somguptaa/Online-BookStore?label=Stars&style=social" alt="repo stars" style="display:inline-block;margin-right:8px">
+    <img loading="lazy" src="https://img.shields.io/github/last-commit/Som9889/som9889.github.io?label=Last%20Updated&color=blue" alt="last updated" style="display:inline-block">
 
     <div id="totalStars" style="margin-top:12px;font-weight:700;color:var(--accent)">⭐ Total Stars: Loading...</div>
 
-    <div style="margin-top:18px;background:var(--card);padding:18px;border-radius:10px;display:inline-block">
+    <div style="margin-top:18px;background:var(--card);padding:14px;border-radius:10px;display:inline-block">
       <strong>Top Languages:</strong>
-      <div id="langs" style="margin-top:10px;color:var(--muted)">Loading…</div>
-      <div id="langsError" style="display:none;color:#c33;margin-top:10px">Failed to load</div>
+      <div id="langs" class="lang-badges" style="margin-top:10px;color:var(--muted)">Loading…</div>
+      <div id="langsError" style="display:none;color:#c33;margin-top:8px">Failed to load</div>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
-  <h2 style="text-align:center">Experience</h2>
+<section id="experience" class="panel" aria-labelledby="exp-heading">
+  <h2 id="exp-heading" class="section-title" style="text-align:center">Experience</h2>
 
-  <div class="timeline-item">
+  <div class="timeline-item reveal">
     <h3>Online BookStore — Lead Developer</h3>
     <p class="muted">2025 • Spring Boot, MySQL, MongoDB, JWT</p>
   </div>
 
-  <div class="timeline-item">
+  <div class="timeline-item reveal">
     <h3>School Management System — Backend Developer</h3>
     <p class="muted">2025 • Spring Boot, MySQL, JWT</p>
   </div>
 
-  <div class="timeline-item">
+  <div class="timeline-item reveal">
     <h3>Full Stack Java Training — Naresh i Technologies</h3>
     <p class="muted">2024</p>
   </div>
-
 </section>
 
 <!-- EDUCATION -->
-<section id="education">
-  <h2 style="text-align:center">Education</h2>
+<section id="education" class="panel" aria-labelledby="edu-heading">
+  <h2 id="edu-heading" class="section-title" style="text-align:center">Education</h2>
 
-  <div class="edu-grid">
-    <div class="edu-card">
-      <strong>B.C.A — MGCGV</strong>
-      <p class="muted">2025 — CGPA: 8.4</p>
-    </div>
-
-    <div class="edu-card">
-      <strong>Class XII — U.P. Board</strong>
-      <p class="muted">2021 — 57.8%</p>
-    </div>
-
-    <div class="edu-card">
-      <strong>Class X — U.P. Board</strong>
-      <p class="muted">2018 — 61.5%</p>
-    </div>
+  <div class="edu-grid reveal">
+    <div class="edu-card"><strong>B.C.A — MGCGV</strong><p class="muted">2025 — CGPA: 8.4</p></div>
+    <div class="edu-card"><strong>Class XII — U.P. Board</strong><p class="muted">2021 — 57.8%</p></div>
+    <div class="edu-card"><strong>Class X — U.P. Board</strong><p class="muted">2018 — 61.5%</p></div>
   </div>
 </section>
 
-<!-- CONTACT (UPDATED PREMIUM DESIGN) -->
-<section id="contact">
-  <h2 style="text-align:center;margin-bottom:25px">Contact</h2>
+<!-- CONTACT -->
+<section id="contact" class="panel" aria-labelledby="contact-heading">
+  <h2 id="contact-heading" class="section-title" style="text-align:center;margin-bottom:12px">Contact</h2>
 
-  <div style="max-width:900px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-
-    <!-- Info Card -->
-    <div style="background:var(--card);padding:22px;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,0.06)">
+  <div class="contact-grid">
+    <div style="background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,0.06)">
       <h3>Get in Touch</h3>
       <p class="muted">Feel free to reach out for collaboration, projects or opportunities.</p>
 
-      <p><strong>Email:</strong> somgupta0011@gmail.com</p>
+      <p><strong>Email:</strong> <a href="mailto:somgupta0011@gmail.com">somgupta0011@gmail.com</a></p>
       <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank">Som Gupta</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/somguptaa" target="_blank">somguptaa</a></p>
 
-      <div style="margin-top:12px;display:flex;gap:10px;">
-        <a class="icon-btn" href="mailto:somgupta0011@gmail.com">📩</a>
-        <a class="icon-btn" href="https://github.com/somguptaa">🐙</a>
-        <a class="icon-btn" href="https://www.linkedin.com/in/som-gupta-2k3/">🔗</a>
+      <div style="margin-top:12px;display:flex;gap:10px">
+        <a class="icon-btn" href="mailto:somgupta0011@gmail.com" title="Email" aria-label="Email">
+          <svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+
+        <a class="icon-btn" href="https://github.com/somguptaa" target="_blank" title="GitHub" aria-label="GitHub">
+          <svg width="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.6c.68.003 1.36.092 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+
+        <a class="icon-btn" href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+          <svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v14H0zM8 8h4.8v2.1h.1c.7-1.3 2.4-2.6 4.9-2.6C23 7.5 24 10 24 14.1V22h-5v-7.5c0-1.8 0-4.1-2.5-4.1-2.5 0-2.9 2-2.9 4v7.6H8V8z"/></svg>
+        </a>
       </div>
     </div>
 
-    <!-- Form Card -->
-    <div style="background:var(--card);padding:22px;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,0.06)">
-      <form id="contactForm">
+    <div style="background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,0.06)">
+      <form id="contactForm" aria-label="Contact form">
         <input name="from_name" class="input" placeholder="Your Name" required>
         <input name="reply_to" type="email" class="input" placeholder="Your Email" required>
         <input name="subject" class="input" placeholder="Subject" required>
         <textarea name="message" class="input" placeholder="Your Message" required></textarea>
 
-        <button class="resume-btn" type="submit" style="margin-top:10px;width:100%;padding:12px;">Send Message</button>
+        <!-- If you want EmailJS direct sending, replace below button text or add spinner in JS -->
+        <button type="submit" class="resume-btn" style="width:100%;margin-top:8px;padding:12px">Send Message</button>
         <p id="formStatus" class="muted" style="margin-top:8px"></p>
       </form>
     </div>
-
   </div>
 </section>
 
@@ -349,77 +337,143 @@
   © <span id="year"></span> Som Gupta • Built with ❤️ • Hosted on GitHub Pages
 </footer>
 
-<!-- JS -->
+<!-- EmailJS placeholder instructions:
+     To enable direct sending without mailto:
+     1) Sign up at https://www.emailjs.com/
+     2) Create email service & template (variables: from_name, reply_to, subject, message)
+     3) Get your public key (user id), service id, template id
+     4) Replace the placeholders in the EMAILJS_* constants below in the script.
+-->
+
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+/* --- Basic helpers & init --- */
+document.getElementById('year').textContent = new Date().getFullYear();
 
-/* Typing Effect */
-const typingEl = document.getElementById("typing");
-const words = ["Java Developer","Spring Boot Developer","Full Stack Developer","API Developer"];
-let wi=0, ci=0, del=false;
-function type(){
-  const word = words[wi];
-  typingEl.innerHTML = word.substring(0, ci) + '<span style="opacity:.4">|</span>';
-  if(!del && ci === word.length){ del=true; setTimeout(type,700); return; }
-  if(del && ci === 0){ del=false; wi=(wi+1)%words.length; }
-  ci += del ? -1 : 1;
-  setTimeout(type, del ? 45 : 120);
-}
-type();
-
-/* Theme Toggle */
-document.getElementById("themeToggle").onclick = ()=>{
-  const isDark = document.documentElement.hasAttribute("data-theme");
-  if(isDark){
-    document.documentElement.removeAttribute("data-theme");
-    localStorage.setItem("theme","");
-  } else {
-    document.documentElement.setAttribute("data-theme","dark");
-    localStorage.setItem("theme","dark");
+/* Typing effect (Clean Professional — fade + typing) */
+(function(){
+  const el = document.getElementById('typing');
+  const phrases = ['Java Developer','Spring Boot Developer','Full Stack Developer','API Developer'];
+  let pi=0, ci=0, del=false;
+  function tick(){
+    const w = phrases[pi];
+    el.innerHTML = w.substring(0, ci) + '<span style="opacity:.4">|</span>';
+    if(!del && ci === w.length){ del=true; setTimeout(tick,900); return; }
+    if(del && ci === 0){ del=false; pi=(pi+1)%phrases.length; }
+    ci += del ? -1 : 1;
+    setTimeout(tick, del ? 50 : 120);
   }
-  document.getElementById("themeToggle").textContent = isDark ? "Dark Mode" : "Light Mode";
-};
+  tick();
+})();
 
-/* GitHub Stars + Languages */
-(async()=>{
-  const user="somguptaa";
-  const ts=document.getElementById("totalStars");
-  const langs=document.getElementById("langs");
-  let stars=0, page=1, map={};
-  try {
+/* Theme toggle with persistence */
+(function(){
+  const btn = document.getElementById('themeToggle');
+  const stored = localStorage.getItem('theme');
+  if(stored) document.documentElement.setAttribute('data-theme', stored);
+  function update(){ btn.textContent = document.documentElement.hasAttribute('data-theme') ? 'Light Mode' : 'Dark Mode'; btn.setAttribute('aria-pressed', document.documentElement.hasAttribute('data-theme')) }
+  update();
+  btn.addEventListener('click', ()=> {
+    if(document.documentElement.hasAttribute('data-theme')){ document.documentElement.removeAttribute('data-theme'); localStorage.setItem('theme',''); }
+    else { document.documentElement.setAttribute('data-theme','dark'); localStorage.setItem('theme','dark'); }
+    update();
+  });
+})();
+
+/* Sidebar (right) + overlay */
+(function(){
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  const closeBtn = document.getElementById('closeSidebar');
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+  function openMenu(){
+    sidebar.classList.add('show'); overlay.classList.add('show');
+    sidebar.setAttribute('aria-hidden','false'); overlay.setAttribute('aria-hidden','false');
+    hamburger.setAttribute('aria-expanded','true');
+    closeBtn.focus();
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    sidebar.classList.remove('show'); overlay.classList.remove('show');
+    sidebar.setAttribute('aria-hidden','true'); overlay.setAttribute('aria-hidden','true');
+    hamburger.setAttribute('aria-expanded','false');
+    hamburger.focus();
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+  sidebarLinks.forEach(a=> a.addEventListener('click', ()=> closeMenu()));
+})();
+
+/* GitHub Stats + Languages (ignore null languages) */
+(async function(){
+  const username = 'somguptaa';
+  const totalStarsEl = document.getElementById('totalStars');
+  const langsEl = document.getElementById('langs');
+  try{
+    let page = 1, stars = 0, counts = {};
     while(true){
-      const r=await fetch(`https://api.github.com/users/${user}/repos?per_page=100&page=${page}`);
-      const d=await r.json(); if(d.length===0) break;
-      d.forEach(repo=>{
-        stars += repo.stargazers_count;
-        if (repo.language) {  // ignore null
-          map[repo.language] = (map[repo.language]||0)+1;
-        }
+      const r = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&page=${page}`);
+      if(!r.ok) throw new Error('GitHub API error');
+      const repos = await r.json();
+      if(repos.length === 0) break;
+      repos.forEach(rp=>{
+        stars += rp.stargazers_count || 0;
+        if(rp.language) counts[rp.language] = (counts[rp.language]||0) + 1;
       });
       page++;
     }
-    ts.textContent = "⭐ Total Stars: " + stars;
-
-    const sorted = Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,6);
-    langs.innerHTML = sorted
-      .map(([k,v])=>`<span style="padding:6px 10px;margin:4px;background:rgba(0,0,0,0.06);border-radius:20px">${k} (${v})</span>`)
-      .join("");
-
+    totalStarsEl.textContent = `⭐ Total Stars: ${stars}`;
+    const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,6);
+    if(sorted.length === 0){ langsEl.textContent = 'No public languages found.' }
+    else { langsEl.innerHTML = sorted.map(([k,c])=>`<span>${k} (${c})</span>`).join(''); }
   } catch(e){
-    ts.textContent="Failed to load stars"; ts.style.color="#c33";
-    langs.style.display="none"; document.getElementById("langsError").style.display="block";
+    if(totalStarsEl){ totalStarsEl.textContent = '⭐ Total Stars: Failed to load'; totalStarsEl.style.color = '#c33'; }
+    if(langsEl) langsEl.style.display = 'none';
+    const le = document.getElementById('langsError'); if(le) le.style.display = 'block';
+    console.error(e);
   }
 })();
 
-/* Contact Form (fallback mailto) */
-document.getElementById("contactForm").onsubmit=(e)=>{
+/* Contact form — EmailJS optional fallback:
+   - By default uses mailto fallback (opens email client).
+   - To enable EmailJS direct send: provide SERVICE_ID, TEMPLATE_ID, USER_ID and un-comment the emailjs block below and the emailjs CDN loader.
+*/
+document.getElementById('contactForm').addEventListener('submit', function(e){
   e.preventDefault();
-  const s=document.getElementById("formStatus");
-  s.textContent="Opening email app…";
-  const form=new FormData(e.target);
-  window.location.href=`mailto:somgupta0011@gmail.com?subject=${encodeURIComponent(form.get("subject"))}&body=${encodeURIComponent("Name: "+form.get("from_name")+"\nEmail: "+form.get("reply_to")+"\n\nMessage:\n"+form.get("message"))}`;
-};
-</script>
+  const status = document.getElementById('formStatus');
+  status.textContent = 'Opening email app…';
+  const fd = new FormData(this);
+  const subject = encodeURIComponent(fd.get('subject') || 'Message from portfolio');
+  const body = encodeURIComponent('Name: '+(fd.get('from_name')||'')+'\nEmail: '+(fd.get('reply_to')||'')+'\n\n'+(fd.get('message')||''));
+  // fallback
+  window.location.href = `mailto:somgupta0011@gmail.com?subject=${subject}&body=${body}`;
+});
 
+/* ---------- Scroll reveal using IntersectionObserver (Clean Professional) ---------- */
+(function(){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('inview');
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+})();
+
+/* Accessibility: ensure focus styles visible for keyboard users */
+(function(){
+  const handleFirstTab = (e) => {
+    if(e.key === 'Tab') document.documentElement.classList.add('user-is-tabbing');
+  };
+  window.addEventListener('keydown', handleFirstTab, {once:true});
+})();
+</script>
 </body>
 </html>
