@@ -125,6 +125,9 @@ nav{
   font-weight:700;
   box-shadow:0 8px 22px rgba(0,0,0,0.06);
 }
+  .muted {
+  color: var(--muted);
+}
 .project-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -191,10 +194,18 @@ nav{
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
   </div>
-  <div style="display:flex;gap:12px;align-items:center">
-    <a class="resume-btn" href="Som-Resume.pdf" target="_blank">Resume</a>
-    <button id="hamburger" class="hamburger">☰</button>
-  </div>
+<div style="display:flex;gap:12px;align-items:center">
+
+  <!-- Dark Mode Toggle -->
+  <button id="themeToggle" class="hamburger" title="Toggle Dark Mode">
+    🌙
+  </button>
+
+  <a class="resume-btn" href="Som-Resume.pdf" target="_blank">Resume</a>
+  <button id="hamburger" class="hamburger">☰</button>
+
+</div>
+
 </nav>
 
 <div id="overlay" class="overlay"></div>
@@ -354,7 +365,7 @@ nav{
       <a href="https://github.com/somguptaa/springboot-file-upload" target="_blank" class="resume-btn">GitHub</a>
     </div>
 
-    <!-- School Management System -->
+    <!-- Spring Boot Scheduling -->
     <div class="card">
       <h3>Spring Boot Scheduling (Backend)</h3>
       <p>
@@ -364,6 +375,34 @@ nav{
         <li>Uses a scheduler to insert random users automatically</li>
         <li>Fetches user data from MongoDB</li>
         <li>Simple and beginner-friendly structure</li>
+      </ul>
+       <a href="https://github.com/somguptaa/Springboot-scheduling" target="_blank" class="resume-btn">GitHub</a>
+    </div>
+
+     <!-- School Management System -->
+    <div class="card">
+      <h3>School Management System (Backend)</h3>
+      <p>
+        Backend system for managing students, teachers, and admin operations.
+      </p>
+      <ul style="color:var(--muted);padding-left:18px;">
+        <li>Designed role-based modules for admin, teacher & student</li>
+        <li>Implemented CRUD APIs using Spring Boot & MySQL</li>
+        <li>Applied DTO mapping and validation</li>
+      </ul>
+      <span style="color:var(--muted);font-weight:600;">Private / In Progress</span>
+    </div>
+
+     <!-- Login Application -->
+    <div class="card">
+      <h3>Login Application (Backend)</h3>
+      <p>
+       Backend system for user registration and authentication
+      </p>
+      <ul style="color:var(--muted);padding-left:18px;">
+      <li>Designed login application with role-based access</li>
+      <li>Implemented Spring Security 5.x</li>
+      <li>Applied BCrypt for password hashing</li>
       </ul>
       <span style="color:var(--muted);font-weight:600;">Private / In Progress</span>
     </div>
@@ -386,7 +425,7 @@ nav{
 <section id="education" class="panel">
   <h2 style="text-align:center">Education</h2>
   <div class="card">
-    <strong>B.C.A — MGCGV</strong>
+    <strong>Bachelor of Computer Applications (BCA) — MGCGV</strong>
     <p>2025 • CGPA: 8.4</p>
   </div>
 </section>
@@ -401,7 +440,7 @@ nav{
       <p>GitHub: <a href="https://github.com/somguptaa" target="_blank">somguptaa</a></p>
     </div>
     <div class="card">
-      <form>
+     <form onsubmit="event.preventDefault(); alert('Message feature coming soon');">
         <input class="input" placeholder="Your Name">
         <input class="input" placeholder="Your Email">
         <textarea class="input" placeholder="Your Message"></textarea>
@@ -418,6 +457,30 @@ nav{
 <button id="scrollTopBtn">↑</button>
 
 <script>
+  /* Dark Mode Toggle */
+const themeToggle = document.getElementById("themeToggle");
+
+function setTheme(theme) {
+  if (theme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+    themeToggle.textContent = "☀️";
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+    themeToggle.textContent = "🌙";
+  }
+  localStorage.setItem("theme", theme);
+}
+
+// Load saved theme
+const savedTheme = localStorage.getItem("theme") || "light";
+setTheme(savedTheme);
+
+// Toggle on click
+themeToggle.onclick = () => {
+  const isDark = document.documentElement.hasAttribute("data-theme");
+  setTheme(isDark ? "light" : "dark");
+};
+
 /* Typing */
 const typingEl=document.getElementById("typing");
 const words=["Java Developer","Spring Boot Developer","Full Stack Developer"];
