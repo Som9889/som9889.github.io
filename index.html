@@ -983,29 +983,39 @@ body {
   align-items: flex-start;
   gap: 14px;
   margin-bottom: 20px;
+  transition: transform 0.25s ease;
 }
 
-/* ICON CONTAINER */
 .contact-icon {
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  background: rgba(59, 130, 246, 0.18); /* BLUE accent */
+  background: rgba(59, 130, 246, 0.18); /* blue accent */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff; /* WHITE icon */
+  color: #ffffff; /* white icon */
   flex-shrink: 0;
+  transition: 
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
-/* SVG */
 .contact-icon svg {
   width: 20px;
   height: 20px;
   fill: currentColor;
 }
 
+.contact-item:hover {
+  transform: translateY(-2px);
+}
 
+.contact-item:hover .contact-icon {
+  background: rgba(59, 130, 246, 0.28);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
+}
 
 .contact-form {
   background: var(--card-bg);
