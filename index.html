@@ -947,74 +947,61 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+/* ================= CONTACT ICONS (FIXED & CONSISTENT) ================= */
+
 .contact-item {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
+  transition: transform 0.2s ease;
 }
 
+/* Icon container */
 .contact-icon {
   width: 48px;
   height: 48px;
-  background: var(--accent-light);
   border-radius: 12px;
+
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
-  font-size: 0.875rem;
-  font-weight: 700;
+
+  color: var(--text-primary);
   flex-shrink: 0;
+
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
-.contact-item a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 500;
-  transition: var(--transition);
-}
-
-.contact-item a:hover {
-  color: var(--accent-hover);
-}
-.contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 20px;
-  transition: transform 0.25s ease;
-}
-
-/* ICON CONTAINER — NORMAL */
-.contact-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: #1f2a3a;               /* same dark surface */
-  border: 1px solid #2b3648;         /* subtle border */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;                    /* white icon */
-  flex-shrink: 0;
-  transition: border-color 0.25s ease;
-}
-
-/* SVG */
+/* SVG fix */
 .contact-icon svg {
   width: 20px;
   height: 20px;
+  display: block;
   fill: currentColor;
 }
 
-/* HOVER — SAME AS CARDS */
+/* Hover — SAME AS CARDS */
 .contact-item:hover {
   transform: translateY(-2px);
 }
 
 .contact-item:hover .contact-icon {
-  border-color: #60a5fa; /* soft blue border (NOT glow) */
+  border-color: var(--accent);
+}
+
+/* Link style stays same */
+.contact-item a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-item a:hover {
+  color: var(--accent-hover);
 }
 
 
