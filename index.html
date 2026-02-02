@@ -983,23 +983,20 @@ body {
   align-items: flex-start;
   gap: 14px;
   margin-bottom: 20px;
-  transition: transform 0.25s ease;
+  transition: transform 0.2s ease;
 }
 
 .contact-icon {
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  background: rgba(59, 130, 246, 0.18); /* blue accent */
+  background: rgba(59, 130, 246, 0.16); /* flat blue accent */
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff; /* white icon */
   flex-shrink: 0;
-  transition: 
-    background 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
+  transition: background 0.2s ease;
 }
 
 .contact-icon svg {
@@ -1009,9 +1006,12 @@ body {
 }
 
 .contact-item:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
+.contact-item:hover .contact-icon {
+  background: rgba(59, 130, 246, 0.22);
+}
 .contact-item:hover .contact-icon {
   background: rgba(59, 130, 246, 0.28);
   box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
