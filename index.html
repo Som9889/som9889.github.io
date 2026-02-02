@@ -993,7 +993,7 @@ body {
   height: 20px;
   fill: var(--accent-color);
 }
-  .contact-item {
+.contact-item {
   display: flex;
   align-items: flex-start;
   gap: 14px;
@@ -1003,19 +1003,17 @@ body {
 .contact-icon {
   width: 42px;
   height: 42px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08); /* subtle dark-theme bg */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff; /* WHITE ICONS */
+  color: #ffffff !important; /* WHITE ICONS */
   flex-shrink: 0;
 }
-
 
 .contact-icon svg {
   width: 20px;
   height: 20px;
+  fill: #ffffff !important; /* DOUBLE SAFETY */
 }
 
 .contact-item:hover .contact-icon {
@@ -1979,6 +1977,7 @@ integrated MySQL and MongoDB, and applied clean layered architecture with proper
 
   </div>
 </section>
+
 
 
 <!-- FOOTER -->
