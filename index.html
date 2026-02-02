@@ -1030,31 +1030,35 @@ body {
   }
 }
 
-/* ================= FOOTER ================= */
+/* ===== FOOTER ===== */
 .footer {
   background: var(--bg-secondary);
-  padding: 3rem 2rem 2rem;
+  padding: 3rem 2rem 1.5rem;
   border-top: 1px solid var(--border);
 }
 
 .footer-content {
   max-width: var(--max-width);
-  margin: 0 auto;
+  margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  margin-bottom: 2rem;
 }
-  
+
 .footer-section h4 {
-  font-size: 1.125rem;
+  color: var(--text-primary);
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--text-primary);
 }
 
 .footer-section p,
-.footer-section a:not(.footer-social-link) {
+.footer-section a {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  display: block;
+}
 
 .footer-section a:hover {
   color: var(--accent);
@@ -1062,8 +1066,7 @@ body {
 
 .footer-social-links {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   margin-top: 1rem;
 }
 
@@ -1071,16 +1074,12 @@ body {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--card-bg);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
   color: var(--text-primary);
-  text-decoration: none;
-  font-weight: 700;
-  transition: var(--transition);
+  transition: 0.25s ease;
 }
 
 .footer-social-link:hover {
@@ -1091,20 +1090,12 @@ body {
 }
 
 .footer-bottom {
-  text-align: center;
-  padding-top: 2rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  font-size: 0.875rem;
-}
-
-.footer-bottom a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.footer-bottom a:hover {
-  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -1112,7 +1103,6 @@ body {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
   .footer-social-links {
     justify-content: center;
   }
@@ -1859,16 +1849,38 @@ integrated MySQL and MongoDB, and applied clean layered architecture with proper
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-content">
+
+    <!-- About -->
     <div class="footer-section">
       <h4>Som Gupta</h4>
       <p>Java & Full Stack Developer</p>
       <p>Building scalable backend solutions with Spring Boot</p>
+
       <div class="footer-social-links">
-        <a href="https://github.com/somguptaa" target="_blank" class="footer-social-link" title="GitHub"><></a>
-        <a href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank" class="footer-social-link" title="LinkedIn">in</a>
-        <a href="mailto:somgupta0011@gmail.com" class="footer-social-link" title="Email">@</a>
+        <!-- GitHub -->
+        <a href="https://github.com/somguptaa" target="_blank" class="footer-social-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1.8 1.8 2.9 1.2.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/>
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/som-gupta-2k3/" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 8.98h4v12H3zM9 8.98h3.8v1.6h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6v6.3h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.7H9z"/>
+          </svg>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:somgupta0011@gmail.com" class="footer-social-link" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
       </div>
     </div>
+
+    <!-- Links -->
     <div class="footer-section">
       <h4>Quick Links</h4>
       <a href="#about">About</a>
@@ -1877,17 +1889,22 @@ integrated MySQL and MongoDB, and applied clean layered architecture with proper
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </div>
+
+    <!-- Contact -->
     <div class="footer-section">
       <h4>Contact</h4>
       <p>Email: somgupta0011@gmail.com</p>
-      <p>Location: Hyderabad, Telangana, IN</p>
-      <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Back to Top ↑</a>
+      <p>Hyderabad, Telangana, IN</p>
+      <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top ↑</a>
     </div>
+
   </div>
-<div class="footer-bottom">
-  <p>© 2026 Som Gupta • Java Backend & Full Stack Developer</p>
-</div>
+
+  <div class="footer-bottom">
+    © 2026 Som Gupta • Java Backend & Full Stack Developer
+  </div>
 </footer>
+
 
 <!-- SCROLL TO TOP -->
 <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
