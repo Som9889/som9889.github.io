@@ -978,21 +978,6 @@ body {
 .contact-item a:hover {
   color: var(--accent-hover);
 }
-.contact-icon {
-  width: 40px;
-  height: 40px;
-  background: var(--bg-secondary);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.contact-icon svg {
-  width: 20px;
-  height: 20px;
-  fill: var(--accent-color);
-}
 .contact-item {
   display: flex;
   align-items: flex-start;
@@ -1000,26 +985,26 @@ body {
   margin-bottom: 20px;
 }
 
+/* ICON CONTAINER */
 .contact-icon {
   width: 42px;
   height: 42px;
+  border-radius: 10px;
+  background: rgba(59, 130, 246, 0.18); /* BLUE accent */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff !important; /* WHITE ICONS */
+  color: #ffffff; /* WHITE icon */
   flex-shrink: 0;
 }
 
+/* SVG */
 .contact-icon svg {
   width: 20px;
   height: 20px;
-  fill: #ffffff !important; /* DOUBLE SAFETY */
+  fill: currentColor;
 }
 
-.contact-item:hover .contact-icon {
-  color: #3b82f6;
-  background: rgba(59, 130, 246, 0.18);
-}
 
 
 .contact-form {
