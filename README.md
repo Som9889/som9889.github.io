@@ -24,7 +24,7 @@ Personal portfolio website showcasing my skills, projects, and experience as a *
 ## Run Locally
 1. Clone the repository:
    ```bash
-   git clone https://github.com/somguptaa/som9889.github.io.git
+   git clone https://github.com/som9889/som9889.github.io.git
    ```
 ---
 
