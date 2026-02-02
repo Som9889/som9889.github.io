@@ -983,39 +983,40 @@ body {
   align-items: flex-start;
   gap: 14px;
   margin-bottom: 20px;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease;
 }
 
+/* ICON CONTAINER — NORMAL */
 .contact-icon {
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  background: rgba(59, 130, 246, 0.16); /* flat blue accent */
+  background: #1f2a3a;               /* same dark surface */
+  border: 1px solid #2b3648;         /* subtle border */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff; /* white icon */
+  color: #ffffff;                    /* white icon */
   flex-shrink: 0;
-  transition: background 0.2s ease;
+  transition: border-color 0.25s ease;
 }
 
+/* SVG */
 .contact-icon svg {
   width: 20px;
   height: 20px;
   fill: currentColor;
 }
 
+/* HOVER — SAME AS CARDS */
 .contact-item:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .contact-item:hover .contact-icon {
-  background: rgba(59, 130, 246, 0.22);
+  border-color: #60a5fa; /* soft blue border (NOT glow) */
 }
-.contact-item:hover .contact-icon {
-  background: rgba(59, 130, 246, 0.28);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
-}
+
 
 .contact-form {
   background: var(--card-bg);
